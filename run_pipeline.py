@@ -11,10 +11,34 @@ SCAN_META_FILE = DATA_DIR / "scan_meta.json"
 
 def run(cmd):
     print("\n>>", " ".join(cmd))
-    r = subprocess.run(cmd, cwd=str(ROOT))
+    try:
+        r = subprocess.run(cmd, cwd=str(ROOT))
+    except FileNotFoundError as exc:
+        print(f"[!] Executable not found: {cmd[0]}")
+        print(f"[!] Details: {exc}")
+        sys.exit(1)
     if r.returncode != 0:
         print("[!] Command failed:", r.returncode)
         sys.exit(r.returncode)
+
+
+def resolve_python_exe() -> str:
+    """
+    Resolve a Python interpreter that works on both local Windows and Linux containers.
+    Priority:
+    1) active interpreter (sys.executable)
+    2) project venv Windows path
+    3) project venv Linux path
+    """
+    candidates = [
+        Path(sys.executable),
+        ROOT / ".venv" / "Scripts" / "python.exe",
+        ROOT / ".venv" / "bin" / "python",
+    ]
+    for candidate in candidates:
+        if candidate and Path(candidate).exists():
+            return str(candidate)
+    return "python"
 
 
 def update_scan_meta(scan_mode: str, discovery_profile: str, check_profile: str):
@@ -65,7 +89,7 @@ def main():
     discovery_profile = args.discovery_profile
     check_profile = args.check_profile
 
-    py = str(ROOT / ".venv" / "Scripts" / "python.exe")
+    py = resolve_python_exe()
 
     run(
         [
