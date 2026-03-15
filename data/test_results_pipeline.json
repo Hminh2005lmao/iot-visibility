@@ -1,0 +1,98 @@
+{
+  "TC-03": {
+    "ok": true,
+    "detail": {
+      "latest_run_id": "20260309_155214Z",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_155214Z",
+      "files_present": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "threat_intel.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ]
+    }
+  },
+  "TC-04": {
+    "ok": true,
+    "detail": {
+      "scan_meta_keys": [
+        "check_profile",
+        "cidr",
+        "discovery_phases",
+        "discovery_profile",
+        "discovery_rate_percent",
+        "live_host_count",
+        "passive_arp_entries_seen",
+        "passive_arp_hosts_in_cidr",
+        "ports_scanned",
+        "runtime_seconds",
+        "scan_finished_utc",
+        "scan_mode",
+        "scan_started_utc",
+        "target_host_count"
+      ],
+      "inventory_count": 0
+    }
+  },
+  "TC-05": {
+    "ok": true,
+    "detail": {
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_154107Z",
+      "scan_mode": "passive",
+      "findings_count": 0
+    }
+  },
+  "TC-06": {
+    "ok": true,
+    "detail": {
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_154114Z",
+      "scan_meta_check_profile": "audit",
+      "evidence_items_checked": 0,
+      "findings_count": 0
+    }
+  },
+  "TC-20": {
+    "ok": true,
+    "detail": {
+      "latest_run_id": "20260309_155214Z",
+      "presence": {
+        "inventory.json": true,
+        "inventory_labeled.json": true,
+        "findings.json": true,
+        "devices_report.json": true,
+        "threat_intel.json": true,
+        "scan_meta.json": true,
+        "evaluation_metrics.json": true,
+        "asset_state.json": true,
+        "asset_changes.json": true
+      },
+      "json_parse_ok": {
+        "inventory.json": true,
+        "inventory_labeled.json": true,
+        "findings.json": true,
+        "devices_report.json": true,
+        "threat_intel.json": true,
+        "scan_meta.json": true,
+        "evaluation_metrics.json": true,
+        "asset_state.json": true,
+        "asset_changes.json": true
+      },
+      "matches_active_data": {
+        "inventory.json": true,
+        "inventory_labeled.json": true,
+        "findings.json": true,
+        "devices_report.json": true,
+        "threat_intel.json": true,
+        "scan_meta.json": true,
+        "evaluation_metrics.json": true,
+        "asset_state.json": true,
+        "asset_changes.json": true
+      }
+    }
+  }
+}

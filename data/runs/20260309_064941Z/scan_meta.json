@@ -1,0 +1,49 @@
+{
+  "cidr": "192.168.1.0/24",
+  "scan_mode": "hybrid",
+  "discovery_profile": "balanced",
+  "target_host_count": 254,
+  "live_host_count": 1,
+  "discovery_rate_percent": 0.39,
+  "scan_started_utc": "2026-03-09T06:47:35.668182Z",
+  "scan_finished_utc": "2026-03-09T06:49:39.937810Z",
+  "runtime_seconds": 124.27,
+  "ports_scanned": "80,443,8080,8443,8000,8888,10000,10443,554,1900,22,23,139,445",
+  "passive_arp_entries_seen": 74,
+  "passive_arp_hosts_in_cidr": 0,
+  "discovery_phases": [
+    {
+      "name": "default_ping_sweep",
+      "args": "-sn",
+      "phase_live_hosts": 1,
+      "new_hosts": 1,
+      "cumulative_live_hosts": 1,
+      "duration_seconds": 31.06
+    },
+    {
+      "name": "arp_sweep",
+      "args": "-sn -PR",
+      "phase_live_hosts": 1,
+      "new_hosts": 0,
+      "cumulative_live_hosts": 1,
+      "duration_seconds": 29.31
+    },
+    {
+      "name": "tcp_icmp_ping",
+      "args": "-sn -PE -PS80,443,22,23,139,445,554,1900 -PA80,443,22,23,139,445,554,1900",
+      "phase_live_hosts": 1,
+      "new_hosts": 0,
+      "cumulative_live_hosts": 1,
+      "duration_seconds": 60.6
+    },
+    {
+      "name": "passive_arp_cache",
+      "args": "arp -a (local cache read)",
+      "phase_live_hosts": 0,
+      "new_hosts": 0,
+      "cumulative_live_hosts": 1,
+      "duration_seconds": 0.0
+    }
+  ],
+  "check_profile": "safe"
+}

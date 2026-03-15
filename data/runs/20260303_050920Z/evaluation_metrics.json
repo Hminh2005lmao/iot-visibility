@@ -1,0 +1,31 @@
+{
+  "generated_at_utc": "2026-03-03T05:09:20.220312Z",
+  "based_on_scan_finished_utc": "2026-03-03T05:08:56.924019Z",
+  "summary": {
+    "target_cidr": "192.168.1.0/24",
+    "target_host_count": 256,
+    "discovered_hosts": 2,
+    "discovery_rate_percent": 0.78,
+    "http_exposed_count": 1,
+    "http_exposure_rate_percent": 50.0,
+    "https_exposed_count": 1,
+    "https_exposure_rate_percent": 50.0,
+    "devices_with_findings": 1,
+    "devices_with_findings_rate_percent": 50.0
+  },
+  "issue_counts": {
+    "self_signed_tls": 1,
+    "https_available": 1,
+    "headers_missing": 1,
+    "default_login_like": 1
+  },
+  "fixture_validation": {
+    "available": true,
+    "fixture_name": "lab_baseline",
+    "devices_checked": 5,
+    "type_precision_percent": 100.0,
+    "iot_flag_accuracy_percent": 100.0,
+    "score_band_accuracy_percent": 100.0,
+    "confidence_target_pass_percent": 100.0
+  }
+}

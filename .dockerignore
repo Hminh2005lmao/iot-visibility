@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+dist/
+data/runs/
+data/scan_job.log
+data/scan_status.json

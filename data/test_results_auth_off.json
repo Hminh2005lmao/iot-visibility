@@ -1,0 +1,203 @@
+{
+  "TC-07": {
+    "ok": true,
+    "detail": {
+      "status": 400,
+      "body": {
+        "error": "invalid_cidr",
+        "ok": false
+      }
+    }
+  },
+  "TC-08": {
+    "ok": true,
+    "detail": {
+      "mode": {
+        "status": 400,
+        "body": {
+          "allowed_modes": [
+            "active",
+            "hybrid",
+            "passive"
+          ],
+          "error": "invalid_scan_mode",
+          "ok": false
+        }
+      },
+      "discovery": {
+        "status": 400,
+        "body": {
+          "allowed_profiles": [
+            "aggressive",
+            "balanced",
+            "standard"
+          ],
+          "error": "invalid_discovery_profile",
+          "ok": false
+        }
+      },
+      "check": {
+        "status": 400,
+        "body": {
+          "allowed_check_profiles": [
+            "audit",
+            "research",
+            "safe"
+          ],
+          "error": "invalid_check_profile",
+          "ok": false
+        }
+      }
+    }
+  },
+  "TC-09": {
+    "ok": true,
+    "detail": {
+      "first": {
+        "status": 200,
+        "body": {
+          "check_profile": "safe",
+          "cidr": "10.10.7.0/24",
+          "discovery_profile": "balanced",
+          "message": "scan_started",
+          "note": "tc09-lock",
+          "ok": true,
+          "scan_mode": "hybrid"
+        }
+      },
+      "second": {
+        "status": 409,
+        "body": {
+          "error": "scan_already_running",
+          "ok": false,
+          "status": {
+            "check_profile": "safe",
+            "cidr": "10.10.7.0/24",
+            "discovery_profile": "balanced",
+            "finished_utc": null,
+            "last_status": "running",
+            "note": "tc09-lock",
+            "pid": 15456,
+            "returncode": null,
+            "running": true,
+            "scan_mode": "hybrid",
+            "started_utc": "2026-03-09T15:49:24.097160Z"
+          }
+        }
+      }
+    }
+  },
+  "TC-10": {
+    "ok": true,
+    "detail": {
+      "status": 200,
+      "keys": [
+        "check_profile",
+        "cidr",
+        "discovery_profile",
+        "finished_utc",
+        "last_status",
+        "log_tail",
+        "note",
+        "pid",
+        "returncode",
+        "running",
+        "scan_mode",
+        "started_utc"
+      ],
+      "running": true
+    }
+  },
+  "TC-11": {
+    "ok": true,
+    "detail": {
+      "status": 200,
+      "keys": [
+        "analytics",
+        "asset_changes",
+        "devices",
+        "evaluation_metrics",
+        "findings",
+        "grade_counts",
+        "issue_counts",
+        "severity_counts",
+        "standards_map",
+        "summary",
+        "threat_intel"
+      ]
+    }
+  },
+  "TC-12": {
+    "ok": true,
+    "detail": {
+      "status": 200,
+      "keys": [
+        "based_on_scan_finished_utc",
+        "check_profile_comparison",
+        "fixture_validation",
+        "generated_at_utc",
+        "issue_counts",
+        "summary"
+      ]
+    }
+  },
+  "TC-13": {
+    "ok": true,
+    "detail": {
+      "status": 200,
+      "keys": [
+        "enriched_findings",
+        "generated_at_utc",
+        "source_findings_count",
+        "summary"
+      ]
+    }
+  },
+  "TC-14": {
+    "ok": true,
+    "detail": {
+      "status": 200,
+      "content_type": "text/csv; charset=utf-8",
+      "line1": "ip,issue_type,severity,timestamp,evidence"
+    }
+  },
+  "TC-15": {
+    "ok": true,
+    "detail": {
+      "status": 200,
+      "content_type": "text/csv; charset=utf-8",
+      "line1": "metric,value"
+    }
+  },
+  "TC-16": {
+    "ok": true,
+    "detail": {
+      "status": 200,
+      "content_type": "application/pdf",
+      "bytes": 901
+    }
+  },
+  "TC-17": {
+    "ok": true,
+    "detail": {
+      "/": 200,
+      "/dashboard": 200,
+      "/visibility": 200,
+      "/evaluation": 200,
+      "/report": 200
+    }
+  },
+  "TC-18": {
+    "ok": true,
+    "detail": {
+      "/api/devices": 200,
+      "/api/findings": 200,
+      "/api/report": 200,
+      "/api/evaluation": 200,
+      "/export/findings.csv": 200,
+      "/export/evaluation.csv": 200,
+      "/export/report.pdf": 200,
+      "/report/print": 200
+    }
+  }
+}

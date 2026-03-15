@@ -1,0 +1,527 @@
+[
+  {
+    "device_id": "10.10.7.7",
+    "ip": "10.10.7.7",
+    "mac": "26:C5:AB:0A:9E:55",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.13",
+    "ip": "10.10.7.13",
+    "mac": "42:5C:ED:39:5E:C4",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.14",
+    "ip": "10.10.7.14",
+    "mac": "FA:6C:23:0A:9F:25",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.20",
+    "ip": "10.10.7.20",
+    "mac": "5E:FD:F9:41:F9:55",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.40",
+    "ip": "10.10.7.40",
+    "mac": "0A:04:FA:B2:78:53",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.52",
+    "ip": "10.10.7.52",
+    "mac": "D2:0D:C1:7B:55:41",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.54",
+    "ip": "10.10.7.54",
+    "mac": "4A:DA:AA:57:99:F6",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.65",
+    "ip": "10.10.7.65",
+    "mac": "3A:68:61:E0:E6:63",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.66",
+    "ip": "10.10.7.66",
+    "mac": "98:5F:D3:E4:3B:C8",
+    "vendor_guess": "Microsoft",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.71",
+    "ip": "10.10.7.71",
+    "mac": "2A:E3:90:EC:85:70",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.75",
+    "ip": "10.10.7.75",
+    "mac": "E6:15:A2:A3:AD:4D",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.81",
+    "ip": "10.10.7.81",
+    "mac": "9A:A3:9F:AC:86:70",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.82",
+    "ip": "10.10.7.82",
+    "mac": "76:B3:84:89:A9:2B",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.87",
+    "ip": "10.10.7.87",
+    "mac": "",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      139,
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "discovery_sources": [
+      "active_nmap",
+      "arp_cache"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.90",
+    "ip": "10.10.7.90",
+    "mac": "F6:6D:9D:8C:AF:42",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.91",
+    "ip": "10.10.7.91",
+    "mac": "02:FC:86:4F:5B:41",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.97",
+    "ip": "10.10.7.97",
+    "mac": "16:0E:F8:81:16:3C",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.98",
+    "ip": "10.10.7.98",
+    "mac": "82:D6:A5:7C:06:DC",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.102",
+    "ip": "10.10.7.102",
+    "mac": "FA:1E:28:64:E8:F6",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.103",
+    "ip": "10.10.7.103",
+    "mac": "CE:A5:91:F6:8D:56",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.104",
+    "ip": "10.10.7.104",
+    "mac": "7A:B5:CC:0D:E6:E9",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.105",
+    "ip": "10.10.7.105",
+    "mac": "74:97:79:87:F7:91",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.109",
+    "ip": "10.10.7.109",
+    "mac": "66:EB:17:26:DF:CE",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.111",
+    "ip": "10.10.7.111",
+    "mac": "A2:5A:0B:AA:32:BC",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.118",
+    "ip": "10.10.7.118",
+    "mac": "DA:88:E3:F2:8D:90",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.124",
+    "ip": "10.10.7.124",
+    "mac": "76:F1:DC:A5:0D:2A",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.136",
+    "ip": "10.10.7.136",
+    "mac": "7E:4F:4B:00:50:0A",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.138",
+    "ip": "10.10.7.138",
+    "mac": "42:6C:65:09:3D:3E",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.158",
+    "ip": "10.10.7.158",
+    "mac": "42:D1:23:10:2A:80",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.161",
+    "ip": "10.10.7.161",
+    "mac": "AC:D5:64:E3:04:95",
+    "vendor_guess": "Chongqing Fugui Electronics",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.166",
+    "ip": "10.10.7.166",
+    "mac": "CA:43:14:D7:36:C2",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.169",
+    "ip": "10.10.7.169",
+    "mac": "06:E8:39:EB:92:8D",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.184",
+    "ip": "10.10.7.184",
+    "mac": "8A:FF:CA:C8:84:03",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.199",
+    "ip": "10.10.7.199",
+    "mac": "86:CF:00:55:92:DB",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.204",
+    "ip": "10.10.7.204",
+    "mac": "86:67:1B:6E:43:46",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.205",
+    "ip": "10.10.7.205",
+    "mac": "52:F1:59:10:AF:50",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "unknown",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.212",
+    "ip": "10.10.7.212",
+    "mac": "BE:5B:14:CA:BE:63",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.222",
+    "ip": "10.10.7.222",
+    "mac": "46:BB:59:54:1D:8A",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.229",
+    "ip": "10.10.7.229",
+    "mac": "D0:57:7E:09:8C:06",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      139,
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.236",
+    "ip": "10.10.7.236",
+    "mac": "D2:98:1E:5D:42:B9",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.248",
+    "ip": "10.10.7.248",
+    "mac": "14:7F:CE:A9:7B:68",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.250",
+    "ip": "10.10.7.250",
+    "mac": "FA:A9:1E:7A:1B:84",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  },
+  {
+    "device_id": "10.10.7.253",
+    "ip": "10.10.7.253",
+    "mac": "9E:9A:06:C3:B9:1F",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-09T06:50:51.735849Z"
+  }
+]

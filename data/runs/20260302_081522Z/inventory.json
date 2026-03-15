@@ -1,0 +1,259 @@
+[
+  {
+    "device_id": "10.10.7.0",
+    "ip": "10.10.7.0",
+    "mac": "FE:CC:15:36:8C:35",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.102",
+    "ip": "10.10.7.102",
+    "mac": "FA:1E:28:64:E8:F6",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.104",
+    "ip": "10.10.7.104",
+    "mac": "7A:B5:CC:0D:E6:E9",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.130",
+    "ip": "10.10.7.130",
+    "mac": "76:16:F2:5B:20:4F",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.133",
+    "ip": "10.10.7.133",
+    "mac": "16:A7:1D:82:FD:CE",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.136",
+    "ip": "10.10.7.136",
+    "mac": "7E:4F:4B:00:50:0A",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.158",
+    "ip": "10.10.7.158",
+    "mac": "42:D1:23:10:2A:80",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.166",
+    "ip": "10.10.7.166",
+    "mac": "CA:43:14:D7:36:C2",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.19",
+    "ip": "10.10.7.19",
+    "mac": "96:19:A3:9B:48:B1",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.193",
+    "ip": "10.10.7.193",
+    "mac": "5A:CE:99:DE:B8:2A",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.196",
+    "ip": "10.10.7.196",
+    "mac": "1E:74:9A:41:3C:10",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.285209Z"
+  },
+  {
+    "device_id": "10.10.7.212",
+    "ip": "10.10.7.212",
+    "mac": "BE:5B:14:CA:BE:63",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.215",
+    "ip": "10.10.7.215",
+    "mac": "DE:8E:A9:F1:CB:D5",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.22",
+    "ip": "10.10.7.22",
+    "mac": "12:EC:71:C8:F0:3F",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.222",
+    "ip": "10.10.7.222",
+    "mac": "46:BB:59:54:1D:8A",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.236",
+    "ip": "10.10.7.236",
+    "mac": "D2:98:1E:5D:42:B9",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.238",
+    "ip": "10.10.7.238",
+    "mac": "46:C3:EB:60:29:94",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.241",
+    "ip": "10.10.7.241",
+    "mac": "F4:1B:A1:2B:80:E9",
+    "vendor_guess": "Apple",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.243",
+    "ip": "10.10.7.243",
+    "mac": "5A:71:00:71:0C:06",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.250",
+    "ip": "10.10.7.250",
+    "mac": "FA:A9:1E:7A:1B:84",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.54",
+    "ip": "10.10.7.54",
+    "mac": "4A:DA:AA:57:99:F6",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.7",
+    "ip": "10.10.7.7",
+    "mac": "26:C5:AB:0A:9E:55",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.75",
+    "ip": "10.10.7.75",
+    "mac": "E6:15:A2:A3:AD:4D",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.82",
+    "ip": "10.10.7.82",
+    "mac": "76:B3:84:89:A9:2B",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.87",
+    "ip": "10.10.7.87",
+    "mac": "",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      139,
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.90",
+    "ip": "10.10.7.90",
+    "mac": "F6:6D:9D:8C:AF:42",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.91",
+    "ip": "10.10.7.91",
+    "mac": "02:FC:86:4F:5B:41",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  },
+  {
+    "device_id": "10.10.7.98",
+    "ip": "10.10.7.98",
+    "mac": "82:D6:A5:7C:06:DC",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:14:56.286803Z"
+  }
+]

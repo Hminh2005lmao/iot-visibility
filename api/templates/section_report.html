@@ -1,0 +1,54 @@
+{% extends "section_base.html" %}
+{% set page_title = "IoT Report" %}
+
+{% block content %}
+<section class="grid grid-4">
+  <article class="card"><div class="k">Devices</div><div class="v">{{ analytics.total_devices }}</div></article>
+  <article class="card"><div class="k">IoT Detected</div><div class="v">{{ analytics.iot_count }}</div></article>
+  <article class="card"><div class="k">Secure Devices</div><div class="v">{{ analytics.secure_count }}</div></article>
+  <article class="card"><div class="k">Average Score</div><div class="v">{{ analytics.avg_score }}</div></article>
+</section>
+
+<section class="card">
+  <h3>Quick Summary</h3>
+  <table>
+    <tbody>
+      <tr><th>Policy Version</th><td>{{ summary.policy_version }}</td></tr>
+      <tr><th>Secure Threshold</th><td>{{ summary.secure_threshold }}</td></tr>
+      <tr><th>Findings</th><td>{{ findings|length }}</td></tr>
+      <tr><th>Top Issues</th><td>{{ analytics.top_issues }}</td></tr>
+      <tr><th>Grade Distribution</th><td>{{ analytics.grade_counts }}</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <h3>Standards Mapping by Issue</h3>
+  <table>
+    <thead>
+      <tr><th>Issue</th><th>Count</th><th>Mapped Standards</th></tr>
+    </thead>
+    <tbody>
+      {% for issue, count in issue_counts.items() %}
+      {% set refs = standards_map.get(issue, []) %}
+      <tr>
+        <td>{{ issue }}</td>
+        <td>{{ count }}</td>
+        <td>
+          {% if refs and refs|length > 0 %}
+            {% for ref in refs %}
+            <div><a href="{{ ref.url }}" target="_blank" rel="noopener">{{ ref.code }}</a> - {{ ref.focus }}</div>
+            {% endfor %}
+          {% else %}
+            <span class="muted">No mapped baseline yet.</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+      {% if issue_counts|length == 0 %}
+      <tr><td colspan="3" class="muted">No findings available.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

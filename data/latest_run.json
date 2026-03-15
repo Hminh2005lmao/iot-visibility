@@ -1,0 +1,18 @@
+{
+  "run_id": "20260310_031828Z",
+  "created_utc": "20260310_031828Z",
+  "note": "manual archive",
+  "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260310_031828Z",
+  "files_archived": [
+    "inventory.json",
+    "inventory_labeled.json",
+    "findings.json",
+    "devices_report.json",
+    "threat_intel.json",
+    "scan_meta.json",
+    "evaluation_metrics.json",
+    "asset_state.json",
+    "asset_changes.json"
+  ],
+  "files_missing": []
+}

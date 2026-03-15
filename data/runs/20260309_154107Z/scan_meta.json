@@ -1,0 +1,25 @@
+{
+  "cidr": "10.10.7.0/30",
+  "scan_mode": "passive",
+  "discovery_profile": "balanced",
+  "target_host_count": 2,
+  "live_host_count": 0,
+  "discovery_rate_percent": 0.0,
+  "scan_started_utc": "2026-03-09T15:41:06.644710Z",
+  "scan_finished_utc": "2026-03-09T15:41:06.690032Z",
+  "runtime_seconds": 0.05,
+  "ports_scanned": "",
+  "passive_arp_entries_seen": 75,
+  "passive_arp_hosts_in_cidr": 0,
+  "discovery_phases": [
+    {
+      "name": "passive_arp_cache",
+      "args": "arp -a (local cache read)",
+      "phase_live_hosts": 0,
+      "new_hosts": 0,
+      "cumulative_live_hosts": 0,
+      "duration_seconds": 0.0
+    }
+  ],
+  "check_profile": "safe"
+}

@@ -1,0 +1,119 @@
+          
+     
+     
+Design and Development of an IoT Device Vulnerability Exploitation FrameworkFinal Year ProjectDesign and Development of an IoT Device Vulnerability Exploitation FrameworkFinal Year ProjectTRAN HOANG MINHModule: 2310CSminh.th3@st.buv.edu.vnProject Supervisor: Dr. Donie JardelezaDate submission: 28/11/2025TRAN HOANG MINHModule: 2310CSminh.th3@st.buv.edu.vnProject Supervisor: Dr. Donie JardelezaDate submission: 28/11/2025
+Design and Development of an IoT Device Vulnerability Exploitation Framework
+Final Year Project
+Design and Development of an IoT Device Vulnerability Exploitation Framework
+Final Year Project
+TRAN HOANG MINH
+Module: 2310CS
+minh.th3@st.buv.edu.vn
+Project Supervisor: Dr. Donie Jardeleza
+Date submission: 28/11/2025
+TRAN HOANG MINH
+Module: 2310CS
+minh.th3@st.buv.edu.vn
+Project Supervisor: Dr. Donie Jardeleza
+Date submission: 28/11/2025
+Contents
+1.Introduction1
+2.Research Background2
+3.Research Question4
+4.Aim & Objectives4
+5.Deliverables5
+6.Academic Challenge6
+7.Plan of Work6
+8.Resources7
+9.Reference List8
+Introduction
+Nowadays, people are more familiar with using IoT devices in small homes and offices like smart thermostats, security cameras, smart lightning, home security systems, etc. Most users do not actually know which network or using default password, or whether their web interfaces are exposed over plain HTTP. This proposal outlines a practical, deployable tool that discovers and fingerprints IoT-like devices on a local network, performs lightweight web-panel hardening checks, and presents risks and recommended actions in a simple dashboard aimed at non-experts. 
+This project is sized for one student in a short timeline. This project won’t break devices, need help from vendors, or take hardware apart. Instead, this project will focus on: finding devices accurately, running a few high-value checks (Is it HTTP or HTTPS? Is there a login page? Are basic security headers set?) and explaining the risks clearly. It’s meant for small networks (student flats, labs, small offices) where a quick “what should I fix first?” list is more useful than a deep penetration test. The proposal includes background, research questions, aims and objectives, deliverables, academic challenges, a short work plan, required resources, and references—serving as a bridge to your final dissertation.
+Research Background
+Internet-of-things (IoT) is increasingly present in homes and businesses around the world, but the adoption of security measures has not kept pace with that. Entry-level devices are engineered for low cost and frictionless onboarding, which often makes these machines have limited security capabilities, inconsistent patching, and poor user visibility over what is connected to the network. As the National Cybersecurity Center of Excellence (NCCoE) notes, once placed on conventional networks, consumer IoT devices may be scanned and attacked within minutes; at scale, such breaches facilitate botnet campaigns and other network-borne threats (NIST NCCoE, 2021a). This dual perspective—systemic risk from a mass compromise and local risk to the household or small office—poses the operating problem for practical mitigation (NIST NCCoE, 2021a).
+Policy and standards responses therefore aim at advancing a practical “floor” of protection. The ETSI EN 303 645 baseline standard clearly defines minimum consumer IoT expectations—unique authentication for each device, secure updates, and secure communications—explicitly to be adapted across heterogeneous device categories (ETSI, 2024). For implementers and assessors, EN 303 645 is valuable because it defines results-oriented controls that can be tested close to the network edge (e.g., management over TLS rather than plaintext) and provides vocabulary for explaining findings to non-specialists (ETSI, 2024).
+By allowing devices (or their ecosystems) to specify the minimal flows they need, the IETF's Manufacturer Usage Description (MUD) improves these baselines at the network layer and allows default-deny, per-device policy enforcement on local infrastructure (Lear et al., 2019). MUD decreases the blast radius of compromise through restricting ingress/egress and lateral movement, but it cannot fix a device's fundamental faults. Moreover, it also gives administrators a machine-readable hook to verify and enforce policies. (Lear et al., 2019). With four vendor-diverse reference builds that show how MUD-driven segmentation and allow-listing reduce the probability and impact of network-based crimes, NCCoE's practice guide SP 1800-15 operationalizes those ideas for small-business and home environments (NIST NCCoE, 2021a; NIST NCCoE, 2021b). The guide aligns capabilities with established control catalogs and records functional test outcomes and scenarios—uncommon, reproducible evidence that network-imposed least privilege for IoT works at home/SOHO scale (NIST NCCoE, 2021b).
+Security issues in the smart-home sector encompass not only DDoS impacts but also privacy breaches resulting from traffic data. Simple rate- or traffic-shaping defenses are thus needed to minimize in-home observability by network intermediaries, as empirical studies show that passive observers can infer device types, states, and even user activities by analyzing encrypted IoT flows (Apthorpe, Reisman, and Feamster, 2017; Acar et al., 2018).  These results demonstrate the importance of local visibility: before segmentation, shaping, or access-control policies can be executed effectively, owners must be conscious of the devices that they have present, how they communicate, and where management surfaces are exposed (Apthorpe, Reisman and Feamster, 2017; Acar et al., 2018).
+In this scenario, the practically tractable problem for small environments is operational visibility and basic hardening, rather than advanced device reverse-engineering. Users usually don't have an inventory; they could have no idea whether login portals appear "default-style," which hosts expose web/administrative interfaces through HTTP versus HTTPS, or whether management endpoints are reachable from harmful network segments. NCCoE specifically emphasizes the importance of transparent and user-friendly processes because many consumer owners are unaware of what is on their networks (NIST NCCoE, 2021a). This motivates a LAN-centric assessment approach that discovers devices, fingerprints likely IoT categories from service banners, and performs low-impact web/admin checks to surface actionable misconfigurations (e.g., HTTP-only management, obvious default logins), aligning with the spirit of EN 303 645 and laying the groundwork for MUD-style enforcement (ETSI, 2024; Lear et al., 2019; NIST NCCoE, 2021a).
+The problem becomes more difficult by the diversity of smart-home ecosystems. Vendor stacks, local radios (Wi-Fi, Zigbee, BLE), and management channels (browser console, mobile-app API, cloud relay) differ across devices, resulting in variable authentication behaviors and uneven observability (Sivaraman et al., 2018). This variety is precisely why lightweight, repeatable network edge checks are appealing: even if device internals remain unknown, banner inspection, protocol exposure, and management-surface probing provide a common foundation for risk triage and user guidance across brands and categories (Sivaraman et al., 2018). In summary, in situations where users lack specific equipment or knowledge, a method which combines inventory (what is present), inspection (how exposed services are set), and communication (how to correct faults) gives high marginal value (NIST NCCoE, 2021a; ETSI, 2024).
+Finally, the recent history of IoT incidents shows the advantages of fixing straightforward, high-impact faults early on. MUD-aligned network policy can substantially reduce the attack surface without modifying devices, as proven by the functional demonstrations in SP 1800-15 (NIST NCCoE, 2021b). However, privacy-side research warns that if management planes remain poor or widely accessible, transport encryption alone will not be enough (Apthorpe, Reisman and Feamster, 2017; Acar et al., 2018). When combined, these strands support a research contribution that operationalizes established baselines and network controls into efficient local tooling: a framework that counts devices, analyzes web/administrative surfaces for a limited number of weaknesses that have been prioritized, and provides remediation recommendations in an easily accessible dashboard. Such a tool is achievable within the average undergraduate period and connects standards guidance with daily practice for families and small businesses. (ETSI, 2024; Lear et al., 2019; NIST NCCoE, 2021a; NIST NCCoE, 2021b).
+Research Question
+Does combining IoT discovery, non-intrusive web-panel testing, and a dashboard improve first-run detection and remediation of issues like HTTP-only admin pages or default-style logins on small/home networks?
+Aim & Objectives
+This project will build a lightweight framework that enumerates IoT devices on a local network, performs non-intrusive security checks on their web/administrative interfaces, and normalizes findings into a consistent schema. 
+Network device discovery & fingerprinting
+Scan the LAN to enumerate hosts; fingerprint likely IoT via MAC OUI, open ports (80/443/554), and banners; build an inventory (IP, MAC, vendor, suspected type).
+Web/admin interface security checks
+For HTTP/HTTPS devices, test: HTTP without TLS, default-style login pages, missing/weak security headers, and no-auth endpoints. Record each finding with device ID, issue, and evidence (URL/title/header).
+Risk modeling & grouping
+Assign simple severity (high=default/no auth; medium=no HTTPS; low=headers). Group issues by device to highlight the worst offenders.
+Risk dashboard (UI/reporting)
+Show device list, per-device issues, overall risk summary, and recommended actions (change password, enable HTTPS, restrict access). Support export/printable report.
+Evaluation
+Test on a small lab/home network with real or simulated devices. Measure discovery success, HTTP exposure rate, and dashboard clarity.
+Deliverables
+Discovery/fingerprinting module producing an IoT inventory (JSON)
+Web-panel hardening checks (HTTP vs HTTPS, login page detection, basic security-header review) with normalized findings (JSON).
+Risk dashboard (web UI) showing per-device risks and recommended actions, with exportable report.
+Technical report documenting design, methods, evaluation, limitations, and future work.
+Academic Challenge
+Assessing IoT security faces persistent challenges: heterogeneous equipment and suppliers, firmware, and protocols prevent a single unified approach. This project will also face resource constraints on embedded devices that limit feasible checks and observability (Cloud-mediated or app-only admin, self-signed TLS, suppressed banners) limits what LAN-side tools can reliably infer. Long-standing weaknesses like weak/default authentication, irregular updates and crypto/configuration baselines remain widespread yet be detected non-intrusively and ethically (Rachidatou Fofana, Fatou A Bah and Khushboo Tripathi)( Sharma, A. and Bhushan, K). Evaluation also faces difficulties: lack of ground-truth datasets on IoT, reproducibility across versions is brittle, measuring precision, recall without invasive is hell (Rachidatou Fofana, Fatou A Bah and Khushboo Tripathi)( Sharma, A. and Bhushan, K). Lastly, with the evolving threat landscape (automation, botnets) making static rule-sets obsolete, demanding tight scoping, explicit assumptions and an adaptable, evidence-driven methodology (Rachidatou Fofana, Fatou A Bah and Khushboo Tripathi)( Sharma, A. and Bhushan, K).
+Plan of Work
+Phase (Weeks)
+Key Tasks
+Gate/ Exit criteria
+Outputs
+Foundations (W1–W2)
+Define finding schema; pick subnets; set up isolated lab; draft ethics/SOP
+Gate M1 (end W2): Go/No-go — schema frozen; lab validated with 2 test hosts
+Schema v1; Lab runbook
+Discovery v1 (W3–W4)
+Implement ARP/nmap discovery; MAC-OUI/vendor hints; build inventory.json; smoke tests
+Gate M2 (end W4): Finds ≥90% of known lab hosts; scan time ≤5 min on /24
+inventory.json; CLI usage
+Checks v1 (W5–W6)
+HTTP/HTTPS probe; grab banner/title/headers; rules v1 (HTTP-only, default-style login, core headers); timeouts & errors
+Gate M3 (end W6): Precision ≥80% on labelled set; robust error handling
+findings.json; evidence snippets
+Dashboard MVP (W7–W8)
+Flask API (/api/devices, /api/findings); UI tables/filters; severity logic; export CSV/PDF
+Gate M4 (end W8): End-to-end demo scan → dashboard in ≤10 min
+Dashboard beta; user-guide draft
+Integration + Checks v2 (W9–W10)
+Wire scan→checks→dashboard; add header review details; stabilize pipeline
+Gate M5 (end W10): Pipeline stable; repeatable runbook; demo passes twice in a row
+Working pipeline v2
+Pilot 1: Home LAN (W11–W12)
+Run on home LAN; capture coverage/runtime; screenshots; quick feedback
+Gate M6 (end W12): Evaluation draft complete (metrics + screenshots)
+Eval pack v1
+Tuning + Pilot 2: SOHO (W13–W14)
+Perf tweaks; heuristic adjustments; usability survey (n≥5)
+Gate M7 (end W14): SUS ≥70; issues logged & prioritized
+Eval pack v2; survey summary
+Docs & Finalization (W15–W16)
+README, user guide, packaging/installer; final report & slides; rehearsal
+Gate M8 (end W16): Full submission package signed off
+Release bundle; final report; demo set
+Risk Controls (RAID highlights)
+R1: Few IoT devices available → use emulated HTTP targets for coverage.
+R2: HTTPS cert issues → permissive probe with evidence tag “self-signed”.
+R3: Time overrun → enforce WIP≤2, keep ruleset to top 3 high-value checks.
+R4: False positives from heuristics → maintain a labelled mini set; require review before gates M3/M5.
+R5: Environment instability → keep a repeatable lab script (same SSID/subnet), version-pin dependencies.
+Resources
+Hardware: Laptop, Wi-Fi router/LAN, 2–3 consumer IoT devices (e.g., smart plug, camera) or emulated HTTP services.
+Software: Python 3, nmap, requests, Flask, Bootstrap
+Info sources: ETSI EN 303 645, NISTIR 8259 series, OWASP IoT & Secure Headers, ENISA, IoTSF.
+Support: Supervisor guidance; campus IT policies for safe lab operation.
+Reference List
+Rachidatou Fofana, Fatou A Bah and Khushboo Tripathi (2025) ‘An approach to identify the security of IOT devices: Challenges and solution’, International Journal of Advanced Research in Science, Communication and Technology, pp. 452–459. doi:10.48175/ijarsct-29959. 
+Sharma, A. and Bhushan, K. (2026) ‘A comprehensive survey on IOT Security: Challenges, security issues, and countermeasures’, Computer Science Review, 59, p. 100839. doi:10.1016/j.cosrev.2025.100839. 
+NIST NCCoE (2021b) NIST SP 1800-15D: Functional Demonstration Results. Gaithersburg, MD: NIST.
+ETSI (2024) EN 303 645 V3.1.3: Cyber Security for Consumer IoT—Baseline Requirements. Sophia Antipolis: ETSI.
+Lear, E., Droms, R. and Romascanu, D. (2019) ‘RFC 8520: Manufacturer Usage Description (MUD) Specification’. IETF.
+Acar, A. et al. (2018) ‘Peek-a-Boo: I See Your Smart Home Activities, Even Encrypted!’, arXiv preprint arXiv:1808.02741.
+Apthorpe, N., Reisman, D. and Feamster, N. (2017) ‘A Smart Home is No Castle: Privacy Vulnerabilities of Encrypted IoT Traffic’, arXiv preprint arXiv:1705.06805.
+NIST NCCoE (2021a) NIST SP 1800-15A: Securing Small-Business and Home IoT Devices—Mitigating Network-Based Attacks Using MUD. Volume A: Executive Summary. Gaithersburg, MD: NIST.
+Sivaraman, V. et al. (2018) ‘Smart IoT Devices in the Home: Security and Privacy Implications’, IEEE Technology and Society Magazine, 37(2), pp. 71–79.
+Word count: 1583

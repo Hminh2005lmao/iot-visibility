@@ -1,0 +1,23 @@
+[
+  {
+    "device_id": "192.168.86.1",
+    "ip": "192.168.86.1",
+    "mac": "",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      139,
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "last_seen": "2026-03-02T08:10:24.749148Z"
+  },
+  {
+    "device_id": "192.168.86.254",
+    "ip": "192.168.86.254",
+    "mac": "00:50:56:F6:BE:30",
+    "vendor_guess": "VMware",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T08:10:24.749148Z"
+  }
+]

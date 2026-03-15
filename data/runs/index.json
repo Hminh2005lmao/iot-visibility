@@ -1,0 +1,392 @@
+{
+  "runs": [
+    {
+      "run_id": "20260310_031828Z",
+      "created_utc": "20260310_031828Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260310_031828Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "threat_intel.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260309_155214Z",
+      "created_utc": "20260309_155214Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_155214Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "threat_intel.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260309_154114Z",
+      "created_utc": "20260309_154114Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_154114Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "threat_intel.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260309_154107Z",
+      "created_utc": "20260309_154107Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_154107Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "threat_intel.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260309_154020Z",
+      "created_utc": "20260309_154020Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_154020Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "threat_intel.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260309_065111Z",
+      "created_utc": "20260309_065111Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_065111Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260309_064941Z",
+      "created_utc": "20260309_064941Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260309_064941Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json",
+        "asset_state.json",
+        "asset_changes.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260304_064702Z",
+      "created_utc": "20260304_064702Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260304_064702Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260304_054229Z",
+      "created_utc": "20260304_054229Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260304_054229Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_091827Z",
+      "created_utc": "20260303_091827Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_091827Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_091732Z",
+      "created_utc": "20260303_091732Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_091732Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_090205Z",
+      "created_utc": "20260303_090205Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_090205Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_085350Z",
+      "created_utc": "20260303_085350Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_085350Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_080640Z",
+      "created_utc": "20260303_080640Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_080640Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_050920Z",
+      "created_utc": "20260303_050920Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_050920Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_050606Z",
+      "created_utc": "20260303_050606Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_050606Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_050604Z",
+      "created_utc": "20260303_050604Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_050604Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_045213Z",
+      "created_utc": "20260303_045213Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_045213Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260303_042845Z",
+      "created_utc": "20260303_042845Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260303_042845Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json",
+        "devices_report.json",
+        "scan_meta.json",
+        "evaluation_metrics.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260302_082458Z",
+      "created_utc": "20260302_082458Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260302_082458Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260302_081522Z",
+      "created_utc": "20260302_081522Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260302_081522Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260302_081028Z",
+      "created_utc": "20260302_081028Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260302_081028Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260222_145132Z",
+      "created_utc": "20260222_145132Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260222_145132Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260222_144704Z",
+      "created_utc": "20260222_144704Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260222_144704Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260222_143013Z",
+      "created_utc": "20260222_143013Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260222_143013Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json"
+      ],
+      "files_missing": []
+    },
+    {
+      "run_id": "20260222_142219Z",
+      "created_utc": "20260222_142219Z",
+      "note": "manual archive",
+      "run_dir": "C:\\Final Year Project\\iot-visibility\\data\\runs\\20260222_142219Z",
+      "files_archived": [
+        "inventory.json",
+        "inventory_labeled.json",
+        "findings.json"
+      ],
+      "files_missing": []
+    }
+  ]
+}

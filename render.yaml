@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: iot-visibility
+    env: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: IOT_PUBLIC_MODE
+        value: "1"
+      - key: IOT_ADMIN_API_KEY
+        sync: false

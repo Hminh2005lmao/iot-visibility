@@ -1,0 +1,153 @@
+{% extends "section_base.html" %}
+{% set page_title = "IoT Findings" %}
+
+{% block content %}
+{% set priority_counts = threat_intel.summary.priority_counts if threat_intel and threat_intel.summary else {} %}
+<section class="grid grid-4">
+  <article class="card"><div class="k">Findings</div><div class="v">{{ findings|length }}</div></article>
+  <article class="card"><div class="k">Issue Types</div><div class="v">{{ issue_counts|length }}</div></article>
+  <article class="card"><div class="k">Critical/High Priority</div><div class="v">{{ priority_counts.get("critical", 0) + priority_counts.get("high", 0) }}</div></article>
+  <article class="card"><div class="k">Top Issue</div><div class="v">{{ analytics.top_issues[0][0] if analytics.top_issues else "none" }}</div></article>
+</section>
+
+<section class="card">
+  <h3>Threat Prioritization Summary</h3>
+  <table>
+    <thead>
+      <tr><th>Priority</th><th>Count</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="pill">critical</span></td><td>{{ priority_counts.get("critical", 0) }}</td></tr>
+      <tr><td><span class="pill">high</span></td><td>{{ priority_counts.get("high", 0) }}</td></tr>
+      <tr><td><span class="pill">medium</span></td><td>{{ priority_counts.get("medium", 0) }}</td></tr>
+      <tr><td><span class="pill">low</span></td><td>{{ priority_counts.get("low", 0) }}</td></tr>
+      {% if (threat_intel.enriched_findings|length if threat_intel else 0) == 0 %}
+      <tr><td colspan="2" class="muted">No threat enrichment data yet. Run pipeline after scanning.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <h3>Prioritized Findings List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>IP</th>
+        <th>Issue</th>
+        <th>Severity</th>
+        <th>Priority</th>
+        <th>Threat Score</th>
+        <th>Threat Context</th>
+        <th>Standards Mapping</th>
+        <th>Evidence</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set rows = threat_intel.enriched_findings if threat_intel and threat_intel.enriched_findings else findings %}
+      {% for f in rows %}
+      <tr>
+        <td class="mono">{{ f.ip }}</td>
+        <td>{{ f.issue_type }}</td>
+        <td>{{ f.severity }}</td>
+        <td>{{ f.priority if f.priority is defined else "n/a" }}</td>
+        <td>{{ f.threat_score if f.threat_score is defined else "n/a" }}</td>
+        <td class="muted">{{ f.rationale if f.rationale is defined else "No enrichment context." }}</td>
+        <td class="muted">
+          {% set refs = f.standards_refs if f.standards_refs is defined else standards_map.get(f.issue_type, []) %}
+          {% if refs and refs|length > 0 %}
+            {% for ref in refs %}
+            <div><a href="{{ ref.url }}" target="_blank" rel="noopener">{{ ref.code }}</a> - {{ ref.focus }}</div>
+            {% endfor %}
+          {% else %}
+            n/a
+          {% endif %}
+        </td>
+        <td class="muted">{{ f.evidence }}</td>
+        <td>{{ recommend.get(f.issue_type, "Review configuration and reduce exposure.") }}</td>
+      </tr>
+      {% endfor %}
+      {% if rows|length == 0 %}
+      <tr><td colspan="9" class="muted">No findings found.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+  {% if api_key_required %}
+  <p class="muted">Admin API key is required for raw findings JSON.</p>
+  <input id="findingsApiKey" type="password" placeholder="Admin API key" style="max-width:320px;width:100%;padding:8px 10px;border:1px solid #d7e2f1;border-radius:9px;margin-bottom:10px;">
+  {% endif %}
+  <p>
+    <a class="btn findings-protected" data-base-href="/api/threat-intel" data-action="open-json" href="/api/threat-intel">Open Threat Intel JSON</a>
+    <a class="btn secondary findings-protected" data-base-href="/api/findings" data-action="open-json" href="/api/findings">Open Raw Findings JSON</a>
+  </p>
+</section>
+<script>
+  (function () {
+    const keyRequired = {{ "true" if api_key_required else "false" }};
+    const input = document.getElementById("findingsApiKey");
+    const links = Array.from(document.querySelectorAll(".findings-protected"));
+    if (!links.length) return;
+
+    if (input) {
+      const cached = sessionStorage.getItem("iot_admin_api_key") || "";
+      if (cached) input.value = cached;
+      input.addEventListener("input", () => {
+        const key = (input.value || "").trim();
+        if (key) {
+          sessionStorage.setItem("iot_admin_api_key", key);
+        } else {
+          sessionStorage.removeItem("iot_admin_api_key");
+        }
+      });
+    }
+
+    function currentKey() {
+      if (input && (input.value || "").trim()) {
+        return (input.value || "").trim();
+      }
+      return (sessionStorage.getItem("iot_admin_api_key") || "").trim();
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const url = link.getAttribute("data-base-href") || link.getAttribute("href") || "#";
+        const key = currentKey();
+        if (keyRequired && !key) {
+          window.alert("Admin API key is required.");
+          if (input) input.focus();
+          return;
+        }
+        try {
+          const headers = {};
+          if (key) headers["X-API-Key"] = key;
+          const res = await fetch(url, { headers });
+          if (res.status === 401) {
+            throw new Error("Unauthorized. Please enter a valid Admin API key.");
+          }
+          if (!res.ok) {
+            throw new Error(`Request failed (${res.status})`);
+          }
+          const data = await res.json();
+          const pretty = escapeHtml(JSON.stringify(data, null, 2));
+          const w = window.open("", "_blank");
+          if (w) {
+            w.document.write(`<pre>${pretty}</pre>`);
+            w.document.close();
+          }
+        } catch (err) {
+          window.alert(err.message || "Request failed.");
+        }
+      });
+    });
+  }());
+</script>
+{% endblock %}

@@ -1,0 +1,259 @@
+{
+  "generated_at_utc": "2026-03-10T03:18:28.193965Z",
+  "source_findings_count": 4,
+  "summary": {
+    "priority_counts": {
+      "critical": 1,
+      "medium": 1,
+      "low": 2
+    },
+    "top_priorities": [
+      {
+        "ip": "192.168.1.1",
+        "issue_type": "default_login_like",
+        "severity": "H",
+        "timestamp": "2026-03-10T03:18:27.267322Z",
+        "evidence": {
+          "url": "https://192.168.1.1/",
+          "status": 200,
+          "server": "",
+          "title": "F6601P",
+          "matched": "password_input",
+          "check_profile": "safe"
+        },
+        "device_type": "iot_or_router",
+        "device_risk_score": 47,
+        "device_risk_grade": "D",
+        "threat_score": 100,
+        "priority": "critical",
+        "exploitability_percent": 88,
+        "impact_percent": 82,
+        "kev_like": true,
+        "epss_like_percent": 71,
+        "rationale": "Default-style login surfaces are frequently targeted in opportunistic attacks.",
+        "references": [
+          "https://nvd.nist.gov/developers/vulnerabilities",
+          "https://api.first.org/epss/",
+          "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        ]
+      },
+      {
+        "ip": "192.168.1.1",
+        "issue_type": "self_signed_tls",
+        "severity": "L",
+        "timestamp": "2026-03-10T03:18:26.832588Z",
+        "evidence": {
+          "url": "https://192.168.1.1/",
+          "detail": "HTTPSConnectionPool(host='192.168.1.1', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable ",
+          "check_profile": "safe"
+        },
+        "device_type": "iot_or_router",
+        "device_risk_score": 47,
+        "device_risk_grade": "D",
+        "threat_score": 41,
+        "priority": "medium",
+        "exploitability_percent": 28,
+        "impact_percent": 35,
+        "kev_like": false,
+        "epss_like_percent": 12,
+        "rationale": "Self-signed TLS reduces trust and can hide man-in-the-middle risk.",
+        "references": [
+          "https://nvd.nist.gov/developers/vulnerabilities",
+          "https://api.first.org/epss/",
+          "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        ]
+      },
+      {
+        "ip": "192.168.1.1",
+        "issue_type": "headers_missing",
+        "severity": "L",
+        "timestamp": "2026-03-10T03:18:27.264321Z",
+        "evidence": {
+          "url": "https://192.168.1.1/",
+          "missing": [
+            "strict-transport-security"
+          ],
+          "check_profile": "safe"
+        },
+        "device_type": "iot_or_router",
+        "device_risk_score": 47,
+        "device_risk_grade": "D",
+        "threat_score": 38,
+        "priority": "low",
+        "exploitability_percent": 20,
+        "impact_percent": 30,
+        "kev_like": false,
+        "epss_like_percent": 9,
+        "rationale": "Missing security headers increases web hardening gaps.",
+        "references": [
+          "https://nvd.nist.gov/developers/vulnerabilities",
+          "https://api.first.org/epss/",
+          "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        ]
+      },
+      {
+        "ip": "192.168.1.1",
+        "issue_type": "https_available",
+        "severity": "I",
+        "timestamp": "2026-03-10T03:18:27.264321Z",
+        "evidence": {
+          "url": "https://192.168.1.1/",
+          "status": 200,
+          "server": "",
+          "title": "F6601P",
+          "check_profile": "safe"
+        },
+        "device_type": "iot_or_router",
+        "device_risk_score": 47,
+        "device_risk_grade": "D",
+        "threat_score": 15,
+        "priority": "low",
+        "exploitability_percent": 5,
+        "impact_percent": 8,
+        "kev_like": false,
+        "epss_like_percent": 3,
+        "rationale": "Informational signal that encrypted admin path exists.",
+        "references": [
+          "https://nvd.nist.gov/developers/vulnerabilities",
+          "https://api.first.org/epss/",
+          "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        ]
+      }
+    ],
+    "issue_priority": [
+      {
+        "issue_type": "default_login_like",
+        "avg_threat_score": 100.0,
+        "count": 1
+      },
+      {
+        "issue_type": "self_signed_tls",
+        "avg_threat_score": 41.0,
+        "count": 1
+      },
+      {
+        "issue_type": "headers_missing",
+        "avg_threat_score": 38.0,
+        "count": 1
+      },
+      {
+        "issue_type": "https_available",
+        "avg_threat_score": 15.0,
+        "count": 1
+      }
+    ]
+  },
+  "enriched_findings": [
+    {
+      "ip": "192.168.1.1",
+      "issue_type": "default_login_like",
+      "severity": "H",
+      "timestamp": "2026-03-10T03:18:27.267322Z",
+      "evidence": {
+        "url": "https://192.168.1.1/",
+        "status": 200,
+        "server": "",
+        "title": "F6601P",
+        "matched": "password_input",
+        "check_profile": "safe"
+      },
+      "device_type": "iot_or_router",
+      "device_risk_score": 47,
+      "device_risk_grade": "D",
+      "threat_score": 100,
+      "priority": "critical",
+      "exploitability_percent": 88,
+      "impact_percent": 82,
+      "kev_like": true,
+      "epss_like_percent": 71,
+      "rationale": "Default-style login surfaces are frequently targeted in opportunistic attacks.",
+      "references": [
+        "https://nvd.nist.gov/developers/vulnerabilities",
+        "https://api.first.org/epss/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      ]
+    },
+    {
+      "ip": "192.168.1.1",
+      "issue_type": "self_signed_tls",
+      "severity": "L",
+      "timestamp": "2026-03-10T03:18:26.832588Z",
+      "evidence": {
+        "url": "https://192.168.1.1/",
+        "detail": "HTTPSConnectionPool(host='192.168.1.1', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable ",
+        "check_profile": "safe"
+      },
+      "device_type": "iot_or_router",
+      "device_risk_score": 47,
+      "device_risk_grade": "D",
+      "threat_score": 41,
+      "priority": "medium",
+      "exploitability_percent": 28,
+      "impact_percent": 35,
+      "kev_like": false,
+      "epss_like_percent": 12,
+      "rationale": "Self-signed TLS reduces trust and can hide man-in-the-middle risk.",
+      "references": [
+        "https://nvd.nist.gov/developers/vulnerabilities",
+        "https://api.first.org/epss/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      ]
+    },
+    {
+      "ip": "192.168.1.1",
+      "issue_type": "headers_missing",
+      "severity": "L",
+      "timestamp": "2026-03-10T03:18:27.264321Z",
+      "evidence": {
+        "url": "https://192.168.1.1/",
+        "missing": [
+          "strict-transport-security"
+        ],
+        "check_profile": "safe"
+      },
+      "device_type": "iot_or_router",
+      "device_risk_score": 47,
+      "device_risk_grade": "D",
+      "threat_score": 38,
+      "priority": "low",
+      "exploitability_percent": 20,
+      "impact_percent": 30,
+      "kev_like": false,
+      "epss_like_percent": 9,
+      "rationale": "Missing security headers increases web hardening gaps.",
+      "references": [
+        "https://nvd.nist.gov/developers/vulnerabilities",
+        "https://api.first.org/epss/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      ]
+    },
+    {
+      "ip": "192.168.1.1",
+      "issue_type": "https_available",
+      "severity": "I",
+      "timestamp": "2026-03-10T03:18:27.264321Z",
+      "evidence": {
+        "url": "https://192.168.1.1/",
+        "status": 200,
+        "server": "",
+        "title": "F6601P",
+        "check_profile": "safe"
+      },
+      "device_type": "iot_or_router",
+      "device_risk_score": 47,
+      "device_risk_grade": "D",
+      "threat_score": 15,
+      "priority": "low",
+      "exploitability_percent": 5,
+      "impact_percent": 8,
+      "kev_like": false,
+      "epss_like_percent": 3,
+      "rationale": "Informational signal that encrypted admin path exists.",
+      "references": [
+        "https://nvd.nist.gov/developers/vulnerabilities",
+        "https://api.first.org/epss/",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      ]
+    }
+  ]
+}

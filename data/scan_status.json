@@ -1,0 +1,13 @@
+{
+  "running": false,
+  "pid": null,
+  "cidr": "192.168.1.1/24",
+  "scan_mode": "hybrid",
+  "discovery_profile": "standard",
+  "check_profile": "safe",
+  "note": "",
+  "started_utc": "2026-03-10T03:18:13.710740Z",
+  "finished_utc": "2026-03-10T03:18:28.474790Z",
+  "returncode": 0,
+  "last_status": "success"
+}

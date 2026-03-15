@@ -1,0 +1,41 @@
+[
+  {
+    "device_id": "192.168.1.1",
+    "ip": "192.168.1.1",
+    "mac": "48:96:D9:60:37:A8",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      80,
+      443
+    ],
+    "fingerprint_hint": "web_managed_device",
+    "last_seen": "2026-03-03T05:08:54.114412Z",
+    "device_class_guess": "likely_iot_or_router",
+    "class_reason": "Web management style ports exposed; Web title/server hints indicate router/admin interface",
+    "device_class_confidence": "high",
+    "class_signals": [
+      "likely_iot_or_router: +4 Web management style ports exposed",
+      "likely_iot_or_router: +4 Web title/server hints indicate router/admin interface"
+    ],
+    "mac_randomized_likely": false
+  },
+  {
+    "device_id": "192.168.1.95",
+    "ip": "192.168.1.95",
+    "mac": "",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      139,
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "last_seen": "2026-03-03T05:08:54.114412Z",
+    "device_class_guess": "likely_pc",
+    "class_reason": "Windows/SMB/RDP style ports exposed",
+    "device_class_confidence": "medium",
+    "class_signals": [
+      "likely_pc: +6 Windows/SMB/RDP style ports exposed"
+    ],
+    "mac_randomized_likely": false
+  }
+]

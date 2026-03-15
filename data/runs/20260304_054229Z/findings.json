@@ -1,0 +1,15 @@
+[
+  {
+    "device_id": "192.168.1.60",
+    "ip": "192.168.1.60",
+    "issue_type": "http_only",
+    "severity": "M",
+    "evidence": {
+      "ports": [
+        80
+      ],
+      "note": "HTTP exposed without HTTPS alternative"
+    },
+    "timestamp": "2026-03-04T05:42:28.765943Z"
+  }
+]

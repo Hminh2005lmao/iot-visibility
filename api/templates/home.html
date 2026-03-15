@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IoT Scanner Home</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+    :root {
+      --ink: #16233e;
+      --muted: #657593;
+      --panel: rgba(255, 255, 255, 0.78);
+      --line: #d7e5f4;
+      --aqua: #61d1e7;
+      --cyan: #2cb7d3;
+      --light: #f7fbff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Space Grotesk", "Segoe UI", Tahoma, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1400px 700px at -15% -18%, rgba(80, 198, 230, 0.18), transparent 55%),
+        radial-gradient(1000px 650px at 110% 4%, rgba(107, 190, 238, 0.15), transparent 50%),
+        radial-gradient(850px 450px at 50% 110%, rgba(120, 210, 239, 0.12), transparent 58%),
+        var(--light);
+      overflow-x: hidden;
+    }
+    .lights {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(0.3px);
+      animation: drift 8s ease-in-out infinite alternate;
+      opacity: 0.65;
+    }
+    .g1 { width: 18px; height: 18px; left: 8%; top: 13%; background: rgba(133, 214, 245, 0.8); }
+    .g2 { width: 26px; height: 26px; left: 16%; top: 23%; background: rgba(169, 226, 245, 0.6); animation-delay: .8s; }
+    .g3 { width: 14px; height: 14px; right: 9%; top: 9%; background: rgba(62, 193, 219, 0.8); animation-delay: .2s; }
+    .g4 { width: 20px; height: 20px; right: 5%; top: 8.5%; background: rgba(165, 163, 236, 0.85); animation-delay: 1s; }
+    .g5 { width: 12px; height: 12px; left: 12%; bottom: 30%; background: rgba(131, 206, 237, 0.5); animation-delay: .4s; }
+    .g6 { width: 10px; height: 10px; right: 14%; bottom: 29%; background: rgba(126, 196, 240, 0.45); animation-delay: .6s; }
+    .g7 { width: 8px; height: 8px; left: 44%; bottom: 19%; background: rgba(85, 188, 220, 0.45); animation-delay: 1.1s; }
+    @keyframes drift {
+      from { transform: translateY(0) translateX(0); }
+      to { transform: translateY(-8px) translateX(4px); }
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 42px 20px 56px;
+      text-align: center;
+    }
+    .title {
+      font-size: clamp(54px, 8vw, 86px);
+      margin: 16px 0 8px;
+      letter-spacing: 0.4px;
+      line-height: 1;
+    }
+    .desc {
+      max-width: 860px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: clamp(20px, 2.6vw, 39px);
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .panel {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 25px 50px rgba(17, 47, 90, 0.12);
+      backdrop-filter: blur(6px);
+    }
+    .inputs {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .input {
+      width: 100%;
+      border: 1px solid #bfd3e8;
+      border-radius: 12px;
+      background: #fff;
+      color: #1a2b44;
+      padding: 12px 13px;
+      font: inherit;
+      font-size: 14px;
+    }
+    .scan-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 26px;
+      padding: 19px 22px;
+      font: inherit;
+      font-size: clamp(28px, 3.4vw, 52px);
+      font-weight: 700;
+      color: #f5fdff;
+      background: linear-gradient(130deg, var(--aqua), var(--cyan));
+      box-shadow: 0 20px 42px rgba(39, 181, 217, 0.38);
+      cursor: pointer;
+      transition: transform .14s ease, filter .14s ease;
+    }
+    .scan-btn:hover { transform: translateY(-2px); filter: brightness(1.04); }
+    .scan-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .status {
+      margin-top: 11px;
+      min-height: 20px;
+      color: #2b4e79;
+      font-size: 14px;
+    }
+    .scan-help {
+      margin-top: 9px;
+      border: 1px dashed #c6d9ee;
+      border-radius: 12px;
+      background: rgba(247, 252, 255, 0.95);
+      color: #355578;
+      font-size: 12px;
+      line-height: 1.35;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .links { margin-top: 12px; font-size: 13px; }
+    .links a { color: #235d98; text-decoration: none; margin: 0 8px; }
+    .links a:hover { text-decoration: underline; }
+
+    .iot-art {
+      width: min(760px, 96vw);
+      margin: 24px auto 0;
+      display: block;
+      filter: drop-shadow(0 24px 34px rgba(77, 132, 195, 0.18));
+    }
+
+    @media (max-width: 900px) {
+      .wrap { padding-top: 20px; }
+      .inputs { grid-template-columns: 1fr; }
+      .panel { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="lights">
+    <span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span>
+    <span class="glow g4"></span><span class="glow g5"></span><span class="glow g6"></span><span class="glow g7"></span>
+  </div>
+
+  <div class="wrap">
+    <h1 class="title">IoT Scanner</h1>
+    <p class="desc">Easily scan your network to identify connected IoT devices and discover potential security risks.</p>
+
+    <section class="panel">
+      <div class="inputs">
+        <input id="cidrInput" class="input" type="text" value="{{ default_scan_cidr }}" placeholder="CIDR (e.g. 192.168.1.0/24)">
+        <select id="modeInput" class="input" aria-label="Scan mode">
+          <option value="hybrid" {{ "selected" if default_scan_mode == "hybrid" else "" }}>Hybrid mode</option>
+          <option value="active" {{ "selected" if default_scan_mode == "active" else "" }}>Active mode</option>
+          <option value="passive" {{ "selected" if default_scan_mode == "passive" else "" }}>Passive mode</option>
+        </select>
+        <select id="profileInput" class="input" aria-label="Discovery profile">
+          <option value="balanced" {{ "selected" if default_discovery_profile == "balanced" else "" }}>Balanced profile</option>
+          <option value="aggressive" {{ "selected" if default_discovery_profile == "aggressive" else "" }}>Aggressive profile</option>
+          <option value="standard" {{ "selected" if default_discovery_profile == "standard" else "" }}>Standard profile</option>
+        </select>
+        <select id="checkProfileInput" class="input" aria-label="Check profile">
+          <option value="safe" {{ "selected" if default_check_profile == "safe" else "" }}>Safe checks</option>
+          <option value="audit" {{ "selected" if default_check_profile == "audit" else "" }}>Audit checks</option>
+          <option value="research" {{ "selected" if default_check_profile == "research" else "" }}>Research checks</option>
+        </select>
+        {% if api_key_required %}
+        <input id="apiKeyInput" class="input" type="password" placeholder="Admin API key">
+        {% endif %}
+        <input id="noteInput" class="input" type="text" placeholder="Optional note">
+      </div>
+      <button id="scanBtn" class="scan-btn">Scan Now</button>
+      <div id="statusText" class="status">Ready to start a scan.</div>
+      <div id="scanHelpText" class="scan-help"></div>
+      <div class="links">
+        <a href="/dashboard">Open dashboard without scanning</a>
+      </div>
+    </section>
+
+    <svg class="iot-art" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IoT device samples">
+      <defs>
+        <linearGradient id="bgBubble" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#cdeffd" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#92d5f1" stop-opacity="0.2"/>
+        </linearGradient>
+        <linearGradient id="speakerBody" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#6fd1ea"/>
+          <stop offset="100%" stop-color="#328fc4"/>
+        </linearGradient>
+        <linearGradient id="camBody" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f2f6ff"/>
+          <stop offset="100%" stop-color="#a9b7dc"/>
+        </linearGradient>
+        <radialGradient id="lens">
+          <stop offset="10%" stop-color="#9de2ff"/>
+          <stop offset="48%" stop-color="#2b4e8c"/>
+          <stop offset="75%" stop-color="#0f2247"/>
+          <stop offset="100%" stop-color="#061329"/>
+        </radialGradient>
+        <linearGradient id="bulb" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffe89a"/>
+          <stop offset="100%" stop-color="#f2be53"/>
+        </linearGradient>
+      </defs>
+
+      <ellipse cx="380" cy="220" rx="170" ry="112" fill="url(#bgBubble)"/>
+      <ellipse cx="308" cy="335" rx="95" ry="18" fill="#b8d7ef" opacity=".7"/>
+      <ellipse cx="432" cy="326" rx="112" ry="20" fill="#b7d4ee" opacity=".67"/>
+      <ellipse cx="546" cy="340" rx="66" ry="12" fill="#b5d4ec" opacity=".62"/>
+
+      <!-- Speaker -->
+      <g transform="translate(248,150)">
+        <ellipse cx="76" cy="16" rx="74" ry="16" fill="#8ce0f3"/>
+        <rect x="2" y="16" width="148" height="174" rx="20" fill="url(#speakerBody)"/>
+        <ellipse cx="76" cy="190" rx="74" ry="16" fill="#2f7cb0"/>
+        <circle cx="50" cy="18" r="8" fill="#dbf8ff"/>
+        <circle cx="76" cy="18" r="8" fill="#dbf8ff"/>
+        <circle cx="102" cy="18" r="8" fill="#dbf8ff"/>
+        <rect x="63" y="64" width="26" height="58" rx="13" fill="#9de8f6"/>
+        <rect x="72" y="120" width="8" height="18" rx="4" fill="#9de8f6"/>
+        <path d="M58 130 Q76 146 94 130" stroke="#9de8f6" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <g fill="#2e73ab" opacity=".9">
+          <circle cx="20" cy="152" r="3"/><circle cx="34" cy="152" r="3"/><circle cx="48" cy="152" r="3"/><circle cx="62" cy="152" r="3"/><circle cx="76" cy="152" r="3"/><circle cx="90" cy="152" r="3"/><circle cx="104" cy="152" r="3"/><circle cx="118" cy="152" r="3"/><circle cx="132" cy="152" r="3"/>
+          <circle cx="20" cy="166" r="3"/><circle cx="34" cy="166" r="3"/><circle cx="48" cy="166" r="3"/><circle cx="62" cy="166" r="3"/><circle cx="76" cy="166" r="3"/><circle cx="90" cy="166" r="3"/><circle cx="104" cy="166" r="3"/><circle cx="118" cy="166" r="3"/><circle cx="132" cy="166" r="3"/>
+          <circle cx="20" cy="180" r="3"/><circle cx="34" cy="180" r="3"/><circle cx="48" cy="180" r="3"/><circle cx="62" cy="180" r="3"/><circle cx="76" cy="180" r="3"/><circle cx="90" cy="180" r="3"/><circle cx="104" cy="180" r="3"/><circle cx="118" cy="180" r="3"/><circle cx="132" cy="180" r="3"/>
+        </g>
+      </g>
+
+      <!-- Camera -->
+      <g transform="translate(372,178) rotate(-10)">
+        <rect x="0" y="26" width="200" height="84" rx="24" fill="url(#camBody)"/>
+        <rect x="20" y="54" width="60" height="8" rx="4" fill="#bcc8e6" opacity=".8"/>
+        <rect x="20" y="70" width="46" height="8" rx="4" fill="#bcc8e6" opacity=".8"/>
+        <ellipse cx="155" cy="67" rx="36" ry="36" fill="#364f83"/>
+        <ellipse cx="155" cy="67" rx="27" ry="27" fill="url(#lens)"/>
+        <circle cx="147" cy="59" r="6" fill="#9de6ff" opacity=".9"/>
+        <rect x="86" y="108" width="26" height="34" rx="6" fill="#607ab2"/>
+        <ellipse cx="99" cy="145" rx="53" ry="10" fill="#9ab7dc"/>
+      </g>
+
+      <!-- Bulb -->
+      <g transform="translate(534,210)">
+        <ellipse cx="50" cy="96" rx="48" ry="54" fill="url(#bulb)"/>
+        <ellipse cx="66" cy="73" rx="12" ry="9" fill="#fff5cd" opacity=".75"/>
+        <rect x="34" y="137" width="32" height="28" rx="8" fill="#b8c5da"/>
+        <rect x="37" y="145" width="26" height="7" rx="3" fill="#98aac8"/>
+        <ellipse cx="50" cy="168" rx="20" ry="8" fill="#9ec1df"/>
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    (function () {
+      const btn = document.getElementById("scanBtn");
+      const cidr = document.getElementById("cidrInput");
+      const mode = document.getElementById("modeInput");
+      const profile = document.getElementById("profileInput");
+      const checkProfile = document.getElementById("checkProfileInput");
+      const apiKey = document.getElementById("apiKeyInput");
+      const note = document.getElementById("noteInput");
+      const status = document.getElementById("statusText");
+      const help = document.getElementById("scanHelpText");
+
+      function modeHelp(modeValue) {
+        if (modeValue === "passive") return "Passive mode reads local ARP cache only (no active probing). It is safest, but may miss devices and skips web checks.";
+        if (modeValue === "active") return "Active mode sends discovery probes and runs web checks. It gives strongest detection and scoring detail.";
+        return "Hybrid mode mixes active discovery with passive ARP observation for best practical coverage.";
+      }
+
+      function profileHelp(profileValue) {
+        if (profileValue === "aggressive") return "Aggressive profile adds extra fallback discovery probes for maximum host visibility.";
+        if (profileValue === "standard") return "Standard profile is quickest but can miss hosts that ignore basic ping.";
+        return "Balanced profile (recommended): combines ping, ARP, and TCP/ICMP ping discovery.";
+      }
+
+      function checkProfileHelp(checkProfileValue) {
+        if (checkProfileValue === "research") return "Research checks: deepest non-intrusive coverage with extra path checks and protocol exposure findings.";
+        if (checkProfileValue === "audit") return "Audit checks: extends safe checks with management protocol exposure findings (Telnet/FTP/SMB).";
+        return "Safe checks: minimal, non-intrusive baseline focused on high-value web/admin hardening issues.";
+      }
+
+      function refreshHelp() {
+        const modeValue = (mode.value || "hybrid").trim().toLowerCase();
+        const profileValue = (profile.value || "balanced").trim().toLowerCase();
+        const checkProfileValue = (checkProfile.value || "safe").trim().toLowerCase();
+        const profileText = modeValue === "passive" ? "Discovery profile is ignored in passive mode." : profileHelp(profileValue);
+        const authText = {{ "true" if api_key_required else "false" }} ? "Admin API key is required to start scans." : "";
+        help.textContent = `${modeHelp(modeValue)} ${profileText} ${checkProfileHelp(checkProfileValue)} ${authText}`.trim();
+      }
+
+      function syncModeControls() {
+        const passive = (mode.value || "").toLowerCase() === "passive";
+        profile.disabled = passive;
+        refreshHelp();
+      }
+      mode.addEventListener("change", syncModeControls);
+      profile.addEventListener("change", refreshHelp);
+      checkProfile.addEventListener("change", refreshHelp);
+      syncModeControls();
+
+      if (apiKey) {
+        const cached = sessionStorage.getItem("iot_admin_api_key") || "";
+        if (cached) apiKey.value = cached;
+      }
+
+      btn.addEventListener("click", async function () {
+        const cidrVal = (cidr.value || "").trim();
+        const modeVal = (mode.value || "hybrid").trim();
+        const profileVal = (profile.value || "balanced").trim();
+        const checkProfileVal = (checkProfile.value || "safe").trim();
+        const apiKeyVal = apiKey ? (apiKey.value || "").trim() : "";
+        const noteVal = (note.value || "").trim();
+        if (apiKeyVal) {
+          sessionStorage.setItem("iot_admin_api_key", apiKeyVal);
+        } else {
+          sessionStorage.removeItem("iot_admin_api_key");
+        }
+        if (!cidrVal) {
+          status.textContent = "Please enter CIDR first.";
+          return;
+        }
+
+        btn.disabled = true;
+        status.textContent = "Starting scan...";
+
+        try {
+          const headers = { "Content-Type": "application/json" };
+          if (apiKeyVal) {
+            headers["X-API-Key"] = apiKeyVal;
+          }
+          const res = await fetch("/api/scan/start", {
+            method: "POST",
+            headers,
+            body: JSON.stringify({
+              cidr: cidrVal,
+              note: noteVal,
+              scan_mode: modeVal,
+              discovery_profile: profileVal,
+              check_profile: checkProfileVal
+            })
+          });
+          const data = await res.json();
+          if (res.ok || data.error === "scan_already_running") {
+            status.textContent = "Scan is running. Redirecting to loading screen...";
+            window.location.href = "/scan/loading";
+            return;
+          }
+          status.textContent = "Cannot start scan: " + (data.error || "unknown error");
+          btn.disabled = false;
+        } catch (e) {
+          status.textContent = "Error starting scan.";
+          btn.disabled = false;
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

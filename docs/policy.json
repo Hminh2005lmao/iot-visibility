@@ -1,0 +1,105 @@
+{
+  "version": "1.2",
+  "description": "Passive IoT security scoring policy. Positive points increase risk, negative points reduce risk.",
+  "rules": {
+    "issue_weights": {
+      "default_login_like": 35,
+      "no_auth_endpoint": 40,
+      "http_only": 20,
+      "telnet_exposed": 30,
+      "ftp_plaintext_exposed": 12,
+      "smb_exposed": 10,
+      "rtsp_exposed": 8,
+      "upnp_exposed": 6,
+      "self_signed_tls": 10,
+      "headers_missing": 8,
+      "https_available": -10
+    },
+    "port_weights": {
+      "21": 8,
+      "23": 25,
+      "139": 15,
+      "445": 15,
+      "554": 10,
+      "1900": 4
+    },
+    "device_type_base_weights": {
+      "likely_iot_or_router": 10,
+      "likely_camera": 12,
+      "likely_printer": 8,
+      "likely_pc": 0,
+      "likely_phone_or_laptop": 0,
+      "unknown": 5
+    }
+  },
+  "tuning": {
+    "confidence_multipliers": {
+      "high": 1.0,
+      "medium": 0.7,
+      "low": 0.4
+    },
+    "endpoint_port_multipliers": {
+      "likely_pc": {
+        "139": 0.6,
+        "445": 0.6
+      }
+    },
+    "issue_multipliers": {
+      "default_login_like": {
+        "password_input_match": 1.0,
+        "keyword_match_only": 0.6
+      }
+    },
+    "low_signal_cap": {
+      "enabled": true,
+      "max_score": 8
+    }
+  },
+  "hard_fail_conditions": {
+    "enabled": true,
+    "rules": [
+      {
+        "rule_id": "critical_admin_exposure",
+        "issue_types": [
+          "no_auth_endpoint",
+          "default_login_like"
+        ],
+        "min_score": 30,
+        "force_insecure": true,
+        "reason": "Critical admin exposure signal detected"
+      },
+      {
+        "rule_id": "plaintext_admin_protocol",
+        "issue_types": [
+          "telnet_exposed"
+        ],
+        "min_score": 30,
+        "force_insecure": true,
+        "reason": "Plaintext admin protocol detected"
+      }
+    ]
+  },
+  "grade_thresholds": [
+    {
+      "grade": "A",
+      "max_score": 9
+    },
+    {
+      "grade": "B",
+      "max_score": 24
+    },
+    {
+      "grade": "C",
+      "max_score": 44
+    },
+    {
+      "grade": "D",
+      "max_score": 64
+    },
+    {
+      "grade": "F",
+      "max_score": 100
+    }
+  ],
+  "secure_threshold_max_score": 24
+}

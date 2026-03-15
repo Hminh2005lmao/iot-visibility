@@ -1,0 +1,10 @@
+{
+  "cidr": "192.168.1.0/24",
+  "target_host_count": 256,
+  "live_host_count": 3,
+  "discovery_rate_percent": 1.17,
+  "scan_started_utc": "2026-03-03T09:17:22.831079Z",
+  "scan_finished_utc": "2026-03-03T09:17:32.217368Z",
+  "runtime_seconds": 9.39,
+  "ports_scanned": "80,443,8080,8443,8000,8888,10000,10443,554,1900,22,23,139,445"
+}

@@ -1,0 +1,61 @@
+{
+  "generated_at_utc": "2026-03-04T05:42:29.559661Z",
+  "policy_version": "1.2",
+  "secure_threshold_max_score": 24,
+  "device_count": 1,
+  "devices": [
+    {
+      "ip": "192.168.1.60",
+      "mac": "",
+      "vendor_guess": "",
+      "open_tcp_ports": [
+        80
+      ],
+      "is_iot": true,
+      "device_type": "iot_or_router",
+      "device_type_raw": "likely_iot_or_router",
+      "device_type_reason": "Web management style ports exposed",
+      "device_type_confidence": "low",
+      "device_type_signals": [
+        "likely_iot_or_router: +4 Web management style ports exposed"
+      ],
+      "risk_score": 24,
+      "risk_score_raw": 24,
+      "risk_grade": "B",
+      "is_secure": true,
+      "why_this_score": [
+        "+20 Observed issue 'http_only' (1 time(s))",
+        "+4 Base risk for type 'iot_or_router' scaled by confidence 'low' (x0.40)"
+      ],
+      "score_breakdown": [
+        {
+          "rule_id": "type:likely_iot_or_router",
+          "points": 4,
+          "reason": "Base risk for type 'iot_or_router' scaled by confidence 'low' (x0.40)",
+          "source": "classification"
+        },
+        {
+          "rule_id": "issue:http_only",
+          "points": 20,
+          "reason": "Observed issue 'http_only' (1 time(s))",
+          "source": "findings"
+        }
+      ],
+      "issues": [
+        {
+          "device_id": "192.168.1.60",
+          "ip": "192.168.1.60",
+          "issue_type": "http_only",
+          "severity": "M",
+          "evidence": {
+            "ports": [
+              80
+            ],
+            "note": "HTTP exposed without HTTPS alternative"
+          },
+          "timestamp": "2026-03-04T05:42:28.765943Z"
+        }
+      ]
+    }
+  ]
+}

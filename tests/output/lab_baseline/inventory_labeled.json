@@ -1,0 +1,99 @@
+[
+  {
+    "device_id": "192.168.50.1",
+    "ip": "192.168.50.1",
+    "mac": "48:96:D9:60:37:A8",
+    "vendor_guess": "ZTE Corporation",
+    "open_tcp_ports": [
+      80,
+      443
+    ],
+    "fingerprint_hint": "web_managed_device",
+    "last_seen": "2026-03-02T00:00:00Z",
+    "device_class_guess": "likely_iot_or_router",
+    "class_reason": "Web management style ports exposed; Vendor signature resembles consumer IoT/network vendor",
+    "device_class_confidence": "high",
+    "class_signals": [
+      "likely_iot_or_router: +4 Web management style ports exposed",
+      "likely_iot_or_router: +4 Vendor signature resembles consumer IoT/network vendor",
+      "likely_iot_or_router: +4 Web title/server hints indicate router/admin interface"
+    ],
+    "mac_randomized_likely": false
+  },
+  {
+    "device_id": "192.168.50.20",
+    "ip": "192.168.50.20",
+    "mac": "00:23:63:8A:11:20",
+    "vendor_guess": "Hikvision",
+    "open_tcp_ports": [
+      80,
+      554
+    ],
+    "fingerprint_hint": "camera_or_nvr",
+    "last_seen": "2026-03-02T00:00:00Z",
+    "device_class_guess": "likely_camera",
+    "class_reason": "RTSP port 554 exposed; Vendor signature resembles camera/NVR vendor",
+    "device_class_confidence": "high",
+    "class_signals": [
+      "likely_camera: +7 RTSP port 554 exposed",
+      "likely_iot_or_router: +4 Web management style ports exposed",
+      "likely_camera: +4 Vendor signature resembles camera/NVR vendor"
+    ],
+    "mac_randomized_likely": false
+  },
+  {
+    "device_id": "192.168.50.30",
+    "ip": "192.168.50.30",
+    "mac": "3C:52:82:AA:BB:30",
+    "vendor_guess": "HP",
+    "open_tcp_ports": [
+      9100
+    ],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T00:00:00Z",
+    "device_class_guess": "likely_printer",
+    "class_reason": "Printer service ports exposed (9100/631); Vendor signature resembles printer vendor",
+    "device_class_confidence": "high",
+    "class_signals": [
+      "likely_printer: +7 Printer service ports exposed (9100/631)",
+      "likely_printer: +5 Vendor signature resembles printer vendor"
+    ],
+    "mac_randomized_likely": false
+  },
+  {
+    "device_id": "192.168.50.40",
+    "ip": "192.168.50.40",
+    "mac": "F0:18:98:11:22:40",
+    "vendor_guess": "Dell Inc.",
+    "open_tcp_ports": [
+      139,
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "last_seen": "2026-03-02T00:00:00Z",
+    "device_class_guess": "likely_pc",
+    "class_reason": "Windows/SMB/RDP style ports exposed; Vendor signature resembles endpoint/PC vendor",
+    "device_class_confidence": "high",
+    "class_signals": [
+      "likely_pc: +6 Windows/SMB/RDP style ports exposed",
+      "likely_pc: +3 Vendor signature resembles endpoint/PC vendor"
+    ],
+    "mac_randomized_likely": false
+  },
+  {
+    "device_id": "192.168.50.50",
+    "ip": "192.168.50.50",
+    "mac": "DA:11:22:33:44:55",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "last_seen": "2026-03-02T00:00:00Z",
+    "device_class_guess": "likely_phone_or_laptop",
+    "class_reason": "Randomized MAC + no common ports",
+    "device_class_confidence": "low",
+    "class_signals": [
+      "likely_phone_or_laptop: +4 Randomized MAC + no common ports"
+    ],
+    "mac_randomized_likely": true
+  }
+]

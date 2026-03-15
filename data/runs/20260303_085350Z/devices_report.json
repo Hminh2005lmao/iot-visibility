@@ -1,0 +1,184 @@
+{
+  "generated_at_utc": "2026-03-03T08:53:50.798977Z",
+  "policy_version": "1.2",
+  "secure_threshold_max_score": 24,
+  "device_count": 3,
+  "devices": [
+    {
+      "ip": "192.168.1.1",
+      "mac": "48:96:D9:60:37:A8",
+      "vendor_guess": "",
+      "open_tcp_ports": [
+        80,
+        443
+      ],
+      "is_iot": true,
+      "device_type": "iot_or_router",
+      "device_type_raw": "likely_iot_or_router",
+      "device_type_reason": "Web management style ports exposed",
+      "device_type_confidence": "low",
+      "device_type_signals": [
+        "likely_iot_or_router: +4 Web management style ports exposed"
+      ],
+      "risk_score": 47,
+      "risk_score_raw": 47,
+      "risk_grade": "D",
+      "is_secure": false,
+      "why_this_score": [
+        "+35 Observed issue 'default_login_like' (1 time(s))",
+        "+10 Observed issue 'self_signed_tls' (1 time(s))",
+        "+8 Observed issue 'headers_missing' (1 time(s))",
+        "+4 Base risk for type 'iot_or_router' scaled by confidence 'low' (x0.40)",
+        "-10 Observed issue 'https_available' (1 time(s))"
+      ],
+      "score_breakdown": [
+        {
+          "rule_id": "type:likely_iot_or_router",
+          "points": 4,
+          "reason": "Base risk for type 'iot_or_router' scaled by confidence 'low' (x0.40)",
+          "source": "classification"
+        },
+        {
+          "rule_id": "issue:self_signed_tls",
+          "points": 10,
+          "reason": "Observed issue 'self_signed_tls' (1 time(s))",
+          "source": "findings"
+        },
+        {
+          "rule_id": "issue:https_available",
+          "points": -10,
+          "reason": "Observed issue 'https_available' (1 time(s))",
+          "source": "findings"
+        },
+        {
+          "rule_id": "issue:headers_missing",
+          "points": 8,
+          "reason": "Observed issue 'headers_missing' (1 time(s))",
+          "source": "findings"
+        },
+        {
+          "rule_id": "issue:default_login_like",
+          "points": 35,
+          "reason": "Observed issue 'default_login_like' (1 time(s))",
+          "source": "findings"
+        }
+      ],
+      "issues": [
+        {
+          "device_id": "192.168.1.1",
+          "ip": "192.168.1.1",
+          "issue_type": "self_signed_tls",
+          "severity": "L",
+          "evidence": {
+            "url": "https://192.168.1.1/",
+            "detail": "HTTPSConnectionPool(host='192.168.1.1', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable "
+          },
+          "timestamp": "2026-03-03T08:53:49.509972Z"
+        },
+        {
+          "device_id": "192.168.1.1",
+          "ip": "192.168.1.1",
+          "issue_type": "https_available",
+          "severity": "I",
+          "evidence": {
+            "url": "https://192.168.1.1/",
+            "status": 200,
+            "server": "",
+            "title": "F6601P"
+          },
+          "timestamp": "2026-03-03T08:53:49.946525Z"
+        },
+        {
+          "device_id": "192.168.1.1",
+          "ip": "192.168.1.1",
+          "issue_type": "headers_missing",
+          "severity": "L",
+          "evidence": {
+            "url": "https://192.168.1.1/",
+            "missing": [
+              "strict-transport-security"
+            ]
+          },
+          "timestamp": "2026-03-03T08:53:49.946525Z"
+        },
+        {
+          "device_id": "192.168.1.1",
+          "ip": "192.168.1.1",
+          "issue_type": "default_login_like",
+          "severity": "H",
+          "evidence": {
+            "url": "https://192.168.1.1/",
+            "status": 200,
+            "server": "",
+            "title": "F6601P",
+            "matched": "password_input"
+          },
+          "timestamp": "2026-03-03T08:53:49.947529Z"
+        }
+      ]
+    },
+    {
+      "ip": "192.168.1.95",
+      "mac": "",
+      "vendor_guess": "",
+      "open_tcp_ports": [
+        139,
+        445
+      ],
+      "is_iot": false,
+      "device_type": "pc",
+      "device_type_raw": "likely_pc",
+      "device_type_reason": "Windows/SMB/RDP style ports exposed",
+      "device_type_confidence": "medium",
+      "device_type_signals": [
+        "likely_pc: +6 Windows/SMB/RDP style ports exposed"
+      ],
+      "risk_score": 18,
+      "risk_score_raw": 18,
+      "risk_grade": "B",
+      "is_secure": true,
+      "why_this_score": [
+        "+9 Risky service port 139 is exposed; class-adjusted (x0.60)",
+        "+9 Risky service port 445 is exposed; class-adjusted (x0.60)"
+      ],
+      "score_breakdown": [
+        {
+          "rule_id": "port:139",
+          "points": 9,
+          "reason": "Risky service port 139 is exposed; class-adjusted (x0.60)",
+          "source": "network"
+        },
+        {
+          "rule_id": "port:445",
+          "points": 9,
+          "reason": "Risky service port 445 is exposed; class-adjusted (x0.60)",
+          "source": "network"
+        }
+      ],
+      "issues": []
+    },
+    {
+      "ip": "192.168.1.97",
+      "mac": "22:37:C2:8D:99:B7",
+      "vendor_guess": "",
+      "open_tcp_ports": [],
+      "is_iot": false,
+      "device_type": "phone_or_laptop",
+      "device_type_raw": "likely_phone_or_laptop",
+      "device_type_reason": "Randomized MAC + no common ports",
+      "device_type_confidence": "low",
+      "device_type_signals": [
+        "likely_phone_or_laptop: +4 Randomized MAC + no common ports"
+      ],
+      "risk_score": 0,
+      "risk_score_raw": 0,
+      "risk_grade": "A",
+      "is_secure": true,
+      "why_this_score": [
+        "+0 No risky signals matched policy rules"
+      ],
+      "score_breakdown": [],
+      "issues": []
+    }
+  ]
+}

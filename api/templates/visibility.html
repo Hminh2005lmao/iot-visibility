@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IoT Visibility</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+    :root {
+      --ink: #162744;
+      --muted: #66809f;
+      --line: #d8e6f5;
+      --panel: rgba(255, 255, 255, 0.84);
+      --bg: #f7fbff;
+      --aqua: #5fd0e7;
+      --cyan: #2cb7d3;
+      --deep: #20466d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Space Grotesk", "Segoe UI", Tahoma, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 620px at -8% -18%, rgba(79, 191, 229, 0.20), transparent 54%),
+        radial-gradient(900px 520px at 108% 5%, rgba(96, 189, 236, 0.15), transparent 50%),
+        var(--bg);
+    }
+    .wrap { max-width: 1150px; margin: 0 auto; padding: 24px 16px 40px; }
+    .crumbs { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+    .crumbs a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(60,86,124,0.45); }
+    .crumbs a:hover { color: #294f8a; border-bottom-color: #294f8a; }
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: 0 22px 46px rgba(18, 46, 89, 0.12);
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+    .hero h1 { margin: 0 0 6px; font-size: clamp(30px, 5vw, 48px); }
+    .hero p { margin: 0 0 14px; color: var(--muted); font-size: 16px; }
+    .controls { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr auto auto; gap: 8px; }
+    .input {
+      width: 100%;
+      border: 1px solid #bfd3e8;
+      border-radius: 10px;
+      background: #fff;
+      color: #1a2b44;
+      padding: 10px 12px;
+      font: inherit;
+      font-size: 14px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 13px;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .btn.scan { color: #f5fdff; background: linear-gradient(130deg, var(--aqua), var(--cyan)); }
+    .btn.secondary { color: #fff; background: var(--deep); }
+    .status { margin-top: 8px; font-size: 13px; color: #285079; min-height: 18px; }
+    .scan-help {
+      margin-top: 8px;
+      border: 1px dashed #c8dcf0;
+      border-radius: 10px;
+      background: #f8fcff;
+      color: #355678;
+      padding: 8px 10px;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .grid { display: grid; gap: 10px; grid-template-columns: repeat(4, minmax(140px, 1fr)); margin-bottom: 12px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      padding: 11px 12px;
+      box-shadow: 0 16px 30px rgba(20, 53, 98, 0.08);
+    }
+    .k { color: var(--muted); font-size: 12px; }
+    .v { font-size: 28px; font-weight: 700; line-height: 1.1; margin-top: 2px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+    th, td { padding: 9px; border-bottom: 1px solid #e8eff8; font-size: 13px; text-align: left; }
+    th { background: #eff5ff; color: #315179; }
+    .muted { color: var(--muted); }
+    @media (max-width: 980px) { .controls { grid-template-columns: 1fr 1fr; } .grid { grid-template-columns: repeat(2, minmax(140px, 1fr)); } }
+    @media (max-width: 680px) { .controls { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="crumbs"><a href="/">Home</a> > IoT Visibility</div>
+
+    <section class="hero">
+      <h1>IoT Visibility</h1>
+      <p>Quick control center for scan, summary, and navigation into the full dashboard.</p>
+      <div class="controls">
+        <input id="cidrInput" class="input" type="text" value="{{ default_scan_cidr }}" placeholder="CIDR (e.g. 192.168.1.0/24)">
+        <select id="modeInput" class="input" aria-label="Scan mode">
+          <option value="hybrid" {{ "selected" if default_scan_mode == "hybrid" else "" }}>Hybrid mode</option>
+          <option value="active" {{ "selected" if default_scan_mode == "active" else "" }}>Active mode</option>
+          <option value="passive" {{ "selected" if default_scan_mode == "passive" else "" }}>Passive mode</option>
+        </select>
+        <select id="profileInput" class="input" aria-label="Discovery profile">
+          <option value="balanced" {{ "selected" if default_discovery_profile == "balanced" else "" }}>Balanced profile</option>
+          <option value="aggressive" {{ "selected" if default_discovery_profile == "aggressive" else "" }}>Aggressive profile</option>
+          <option value="standard" {{ "selected" if default_discovery_profile == "standard" else "" }}>Standard profile</option>
+        </select>
+        <select id="checkProfileInput" class="input" aria-label="Check profile">
+          <option value="safe" {{ "selected" if default_check_profile == "safe" else "" }}>Safe checks</option>
+          <option value="audit" {{ "selected" if default_check_profile == "audit" else "" }}>Audit checks</option>
+          <option value="research" {{ "selected" if default_check_profile == "research" else "" }}>Research checks</option>
+        </select>
+        {% if api_key_required %}
+        <input id="apiKeyInput" class="input" type="password" placeholder="Admin API key">
+        {% endif %}
+        <input id="noteInput" class="input" type="text" placeholder="Optional note">
+        <button id="scanBtn" class="btn scan">Scan Now</button>
+        <a class="btn secondary" href="/dashboard">Open Dashboard</a>
+        <a class="btn secondary" href="/evaluation">Evaluation</a>
+      </div>
+      <div id="statusText" class="status">Ready.</div>
+      <div id="scanHelpText" class="scan-help"></div>
+    </section>
+
+    <section class="grid">
+      <article class="card"><div class="k">Devices</div><div class="v">{{ analytics.total_devices }}</div></article>
+      <article class="card"><div class="k">IoT Detected</div><div class="v">{{ analytics.iot_count }}</div></article>
+      <article class="card"><div class="k">High Risk (D/F)</div><div class="v">{{ analytics.high_risk_count }}</div></article>
+      <article class="card"><div class="k">Discovery Rate</div><div class="v">{{ eval_metrics.summary.discovery_rate_percent if eval_metrics.summary.discovery_rate_percent is not none else "n/a" }}%</div></article>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0;">Top Risky Devices</h3>
+      <table>
+        <thead>
+          <tr><th>IP</th><th>Type</th><th>Score</th><th>Grade</th><th>Findings</th></tr>
+        </thead>
+        <tbody>
+          {% for d in devices[:6] %}
+          <tr>
+            <td>{{ d.ip }}</td>
+            <td>{{ d.device_type }}</td>
+            <td>{{ d.risk_score }}</td>
+            <td>{{ d.risk_grade }}</td>
+            <td>{{ d.issues|length }}</td>
+          </tr>
+          {% endfor %}
+          {% if devices|length == 0 %}
+          <tr><td colspan="5" class="muted">No devices found yet.</td></tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      const btn = document.getElementById("scanBtn");
+      const cidr = document.getElementById("cidrInput");
+      const mode = document.getElementById("modeInput");
+      const profile = document.getElementById("profileInput");
+      const checkProfile = document.getElementById("checkProfileInput");
+      const apiKey = document.getElementById("apiKeyInput");
+      const note = document.getElementById("noteInput");
+      const status = document.getElementById("statusText");
+      const help = document.getElementById("scanHelpText");
+
+      function modeHelp(modeValue) {
+        if (modeValue === "passive") return "Passive mode uses local ARP cache only. Lowest impact but no active web checks.";
+        if (modeValue === "active") return "Active mode performs direct host probing + web checks for higher coverage and richer findings.";
+        return "Hybrid mode combines active probing with passive ARP observation (recommended).";
+      }
+
+      function profileHelp(profileValue) {
+        if (profileValue === "aggressive") return "Aggressive profile: deepest host discovery with fallback open-port presence checks.";
+        if (profileValue === "standard") return "Standard profile: fastest basic ping sweep only.";
+        return "Balanced profile: mixed ping/ARP/TCP discovery for practical coverage.";
+      }
+
+      function checkProfileHelp(checkProfileValue) {
+        if (checkProfileValue === "research") return "Research checks: deepest non-intrusive path checks plus protocol exposure findings.";
+        if (checkProfileValue === "audit") return "Audit checks: adds protocol exposure findings (Telnet/FTP/SMB).";
+        return "Safe checks: baseline non-intrusive checks only.";
+      }
+
+      function refreshHelp() {
+        const modeValue = (mode.value || "hybrid").trim().toLowerCase();
+        const profileValue = (profile.value || "balanced").trim().toLowerCase();
+        const checkProfileValue = (checkProfile.value || "safe").trim().toLowerCase();
+        const profileText = modeValue === "passive" ? "Discovery profile is ignored in passive mode." : profileHelp(profileValue);
+        const authText = {{ "true" if api_key_required else "false" }} ? "Admin API key is required to start scans." : "";
+        help.textContent = `${modeHelp(modeValue)} ${profileText} ${checkProfileHelp(checkProfileValue)} ${authText}`.trim();
+      }
+
+      function syncModeControls() {
+        const passive = (mode.value || "").toLowerCase() === "passive";
+        profile.disabled = passive;
+        refreshHelp();
+      }
+      mode.addEventListener("change", syncModeControls);
+      profile.addEventListener("change", refreshHelp);
+      checkProfile.addEventListener("change", refreshHelp);
+      syncModeControls();
+      if (apiKey) {
+        const cached = sessionStorage.getItem("iot_admin_api_key") || "";
+        if (cached) apiKey.value = cached;
+      }
+
+      btn.addEventListener("click", async function () {
+        const cidrVal = (cidr.value || "").trim();
+        const modeVal = (mode.value || "hybrid").trim();
+        const profileVal = (profile.value || "balanced").trim();
+        const checkProfileVal = (checkProfile.value || "safe").trim();
+        const apiKeyVal = apiKey ? (apiKey.value || "").trim() : "";
+        const noteVal = (note.value || "").trim();
+        if (apiKeyVal) {
+          sessionStorage.setItem("iot_admin_api_key", apiKeyVal);
+        } else {
+          sessionStorage.removeItem("iot_admin_api_key");
+        }
+        if (!cidrVal) {
+          status.textContent = "Please enter CIDR first.";
+          return;
+        }
+
+        btn.disabled = true;
+        status.textContent = "Starting scan...";
+
+        try {
+          const headers = { "Content-Type": "application/json" };
+          if (apiKeyVal) {
+            headers["X-API-Key"] = apiKeyVal;
+          }
+          const res = await fetch("/api/scan/start", {
+            method: "POST",
+            headers,
+            body: JSON.stringify({
+              cidr: cidrVal,
+              note: noteVal,
+              scan_mode: modeVal,
+              discovery_profile: profileVal,
+              check_profile: checkProfileVal
+            })
+          });
+          const data = await res.json();
+          if (res.ok || data.error === "scan_already_running") {
+            status.textContent = "Scan is running. Redirecting...";
+            window.location.href = "/scan/loading";
+            return;
+          }
+          status.textContent = "Cannot start scan: " + (data.error || "unknown error");
+          btn.disabled = false;
+        } catch (e) {
+          status.textContent = "Error starting scan.";
+          btn.disabled = false;
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+{% extends "section_base.html" %}
+{% set page_title = "IoT Exports" %}
+
+{% block content %}
+<section class="grid grid-4">
+  <article class="card"><div class="k">Devices</div><div class="v">{{ analytics.total_devices }}</div></article>
+  <article class="card"><div class="k">Findings</div><div class="v">{{ findings|length }}</div></article>
+  <article class="card"><div class="k">Policy Version</div><div class="v">{{ summary.policy_version }}</div></article>
+  <article class="card"><div class="k">Avg Score</div><div class="v">{{ analytics.avg_score }}</div></article>
+</section>
+
+<section class="card">
+  <h3>Export and Data Access</h3>
+  <p class="muted">Use these links to download data or integrate this scanner with other tools.</p>
+  {% if api_key_required %}
+  <p class="muted">Admin API key is required for export downloads. Enter it once below.</p>
+  <input id="exportApiKey" type="password" placeholder="Admin API key" style="max-width:320px;width:100%;padding:8px 10px;border:1px solid #d7e2f1;border-radius:9px;margin-bottom:10px;">
+  {% endif %}
+  <a class="btn protected-link" data-base-href="/export/findings.csv" data-action="download" href="/export/findings.csv">Download Findings CSV</a>
+  <a class="btn protected-link" data-base-href="/report/print" data-action="open-html" href="/report/print">Printable Report</a>
+  <a class="btn protected-link" data-base-href="/export/report.pdf" data-action="download" href="/export/report.pdf">Download Report PDF</a>
+  <a class="btn secondary protected-link" data-base-href="/api/report" data-action="open-json" href="/api/report">Open Report JSON</a>
+  <a class="btn secondary protected-link" data-base-href="/api/evaluation" data-action="open-json" href="/api/evaluation">Open Evaluation JSON</a>
+  <a class="btn secondary protected-link" data-base-href="/api/devices" data-action="open-json" href="/api/devices">Open Devices JSON</a>
+  <a class="btn secondary protected-link" data-base-href="/api/findings" data-action="open-json" href="/api/findings">Open Findings JSON</a>
+  <a class="btn secondary protected-link" data-base-href="/export/evaluation.csv" data-action="download" href="/export/evaluation.csv">Download Evaluation CSV</a>
+</section>
+
+<section class="card">
+  <h3>What each export contains</h3>
+  <table>
+    <thead>
+      <tr><th>Resource</th><th>Path</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Scored report</td><td class="mono">/api/report</td><td>Summary, analytics, device list, and findings.</td></tr>
+      <tr><td>Evaluation metrics JSON</td><td class="mono">/api/evaluation</td><td>Discovery, exposure and fixture precision metrics.</td></tr>
+      <tr><td>Devices only</td><td class="mono">/api/devices</td><td>Per-device classification and security scoring.</td></tr>
+      <tr><td>Findings only</td><td class="mono">/api/findings</td><td>Detailed issue records and evidence.</td></tr>
+      <tr><td>CSV export</td><td class="mono">/export/findings.csv</td><td>Spreadsheet-friendly findings output.</td></tr>
+      <tr><td>Evaluation CSV</td><td class="mono">/export/evaluation.csv</td><td>Operational and fixture metrics in CSV format.</td></tr>
+      <tr><td>Printable report</td><td class="mono">/report/print</td><td>Print-friendly HTML summary and details.</td></tr>
+      <tr><td>PDF report</td><td class="mono">/export/report.pdf</td><td>Portable report export for submission and sharing.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<script>
+  (function () {
+    const keyRequired = {{ "true" if api_key_required else "false" }};
+    const input = document.getElementById("exportApiKey");
+    const links = Array.from(document.querySelectorAll(".protected-link"));
+    if (!links.length) return;
+
+    if (input) {
+      const cached = sessionStorage.getItem("iot_admin_api_key") || "";
+      if (cached) input.value = cached;
+      input.addEventListener("input", () => {
+        const key = (input.value || "").trim();
+        if (key) {
+          sessionStorage.setItem("iot_admin_api_key", key);
+        } else {
+          sessionStorage.removeItem("iot_admin_api_key");
+        }
+      });
+    }
+
+    function currentKey() {
+      if (input && (input.value || "").trim()) {
+        return (input.value || "").trim();
+      }
+      return (sessionStorage.getItem("iot_admin_api_key") || "").trim();
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function inferName(url, fallback) {
+      const clean = (url || "").split("?")[0];
+      const last = clean.substring(clean.lastIndexOf("/") + 1);
+      return last || fallback;
+    }
+
+    function filenameFromHeader(headerVal) {
+      if (!headerVal) return "";
+      const m = /filename="?([^"]+)"?/i.exec(headerVal);
+      return m ? m[1] : "";
+    }
+
+    async function fetchWithHeader(url, key) {
+      const headers = {};
+      if (key) headers["X-API-Key"] = key;
+      const res = await fetch(url, { headers });
+      if (res.status === 401) {
+        throw new Error("Unauthorized. Please enter a valid Admin API key.");
+      }
+      if (!res.ok) {
+        throw new Error(`Request failed (${res.status})`);
+      }
+      return res;
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const url = link.getAttribute("data-base-href") || link.getAttribute("href") || "#";
+        const action = link.getAttribute("data-action") || "open-json";
+        const key = currentKey();
+        if (keyRequired && !key) {
+          window.alert("Admin API key is required.");
+          if (input) input.focus();
+          return;
+        }
+        try {
+          const res = await fetchWithHeader(url, key);
+          if (action === "open-json") {
+            const data = await res.json();
+            const pretty = escapeHtml(JSON.stringify(data, null, 2));
+            const w = window.open("", "_blank");
+            if (w) {
+              w.document.write(`<pre>${pretty}</pre>`);
+              w.document.close();
+            }
+            return;
+          }
+
+          const blob = await res.blob();
+          const blobUrl = URL.createObjectURL(blob);
+          if (action === "open-html") {
+            window.open(blobUrl, "_blank");
+            setTimeout(() => URL.revokeObjectURL(blobUrl), 30000);
+            return;
+          }
+          const downloadName =
+            filenameFromHeader(res.headers.get("content-disposition")) ||
+            inferName(url, "download.bin");
+          const a = document.createElement("a");
+          a.href = blobUrl;
+          a.download = downloadName;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+        } catch (err) {
+          window.alert(err.message || "Export request failed.");
+        }
+      });
+    });
+  }());
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "expected_device_count": 5,
+    "min_iot": 2,
+    "max_iot": 4
+  },
+  "devices": [
+    {
+      "ip": "192.168.50.1",
+      "expected_type": "iot_or_router",
+      "expected_is_iot": true,
+      "min_confidence": "medium",
+      "min_score": 35,
+      "max_score": 80
+    },
+    {
+      "ip": "192.168.50.20",
+      "expected_type": "camera",
+      "expected_is_iot": true,
+      "min_confidence": "high",
+      "min_score": 45,
+      "max_score": 90
+    },
+    {
+      "ip": "192.168.50.30",
+      "expected_type": "printer",
+      "expected_is_iot": true,
+      "min_confidence": "high",
+      "min_score": 5,
+      "max_score": 20
+    },
+    {
+      "ip": "192.168.50.40",
+      "expected_type": "pc",
+      "expected_is_iot": false,
+      "min_confidence": "medium",
+      "min_score": 10,
+      "max_score": 30
+    },
+    {
+      "ip": "192.168.50.50",
+      "expected_type": "phone_or_laptop",
+      "expected_is_iot": false,
+      "min_confidence": "low",
+      "min_score": 0,
+      "max_score": 8
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <style>
+    :root {
+      --bg: #f3f7fd;
+      --card: #ffffff;
+      --line: #d7e2f1;
+      --ink: #15253a;
+      --muted: #5f728e;
+      --accent: #1368ff;
+      --pill: #eef4ff;
+      --ok: #13834f;
+      --bad: #b83528;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", Tahoma, sans-serif; }
+    .wrap { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+    .top {
+      background: linear-gradient(120deg, #113663, #1a5798);
+      color: #eef5ff;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .top h1 { margin: 0 0 10px; font-size: 28px; }
+    .tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tab {
+      color: #d5e4fa;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+    }
+    .tab.active { color: #fff; border-color: #7db4ff; background: rgba(255,255,255,0.1); }
+    .tab:hover { border-color: #8fbdfd; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .k { font-size: 12px; color: var(--muted); }
+    .v { font-size: 21px; font-weight: 600; }
+    .grid { display: grid; gap: 10px; }
+    .grid-4 { grid-template-columns: repeat(4, minmax(130px, 1fr)); }
+    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    th, td { padding: 9px; border-bottom: 1px solid #e8eff8; font-size: 13px; text-align: left; vertical-align: top; }
+    th { background: #eff5ff; color: #305176; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .pill { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; background: var(--pill); }
+    .ok { color: var(--ok); font-weight: 600; }
+    .no { color: var(--bad); font-weight: 600; }
+    .muted { color: var(--muted); }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 9px;
+      padding: 8px 10px;
+      font-size: 13px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    .btn.secondary { background: #2e4d75; }
+    @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, minmax(130px, 1fr)); } }
+    @media (max-width: 640px) { .grid-4 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1>IoT Security Command Center</h1>
+      <nav class="tabs">
+        <a class="tab" href="/">Home</a>
+        <a class="tab" href="/visibility">IoT Visibility</a>
+        <a class="tab {{ 'active' if active_tab == 'report' else '' }}" href="/report">Report</a>
+        <a class="tab {{ 'active' if active_tab == 'devices' else '' }}" href="/devices">Devices</a>
+        <a class="tab {{ 'active' if active_tab == 'findings' else '' }}" href="/findings">Findings</a>
+        <a class="tab {{ 'active' if active_tab == 'evaluation' else '' }}" href="/evaluation">Evaluation</a>
+        <a class="tab {{ 'active' if active_tab == 'exports' else '' }}" href="/exports">Exports</a>
+        <a class="tab" href="/dashboard">Full Dashboard</a>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

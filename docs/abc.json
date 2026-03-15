@@ -1,0 +1,12 @@
+{
+  "device_id": "string",
+  "ip": "string",
+  "mac": "string",
+  "vendor_guess": "string",
+  "open_ports": [80, 443, 554],
+  "service_banners": {"80/tcp": "Server: Boa/0.94"},
+  "issue_type": "enum (http_only|default_login_like|headers_missing|self_signed_tls)",
+  "evidence": {"url": "http://192.168.1.50/", "title": "IP Camera", "header": "Server: Boa"},
+  "severity": "H|M|L",
+  "timestamp": "ISO8601"
+}

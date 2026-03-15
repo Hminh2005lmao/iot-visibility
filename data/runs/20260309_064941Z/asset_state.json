@@ -1,0 +1,26 @@
+{
+  "updated_at_utc": "2026-03-09T06:49:40.996464Z",
+  "active_count": 1,
+  "missing_count": 0,
+  "assets": [
+    {
+      "identity_key": "ip:192.168.1.60",
+      "ip": "192.168.1.60",
+      "mac": "",
+      "vendor_guess": "",
+      "device_type": "iot_or_router",
+      "risk_score": 24,
+      "risk_grade": "B",
+      "is_secure": true,
+      "is_iot": true,
+      "open_tcp_ports": [
+        80
+      ],
+      "first_seen_utc": "2026-03-08T10:57:01.788351Z",
+      "last_seen_utc": "2026-03-09T06:49:40.996464Z",
+      "seen_count": 2,
+      "status": "active",
+      "missing_since_utc": null
+    }
+  ]
+}

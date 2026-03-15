@@ -1,0 +1,13 @@
+{
+  "generated_at_utc": "2026-03-09T06:49:40.996464Z",
+  "scan_finished_utc": "2026-03-09T06:49:39.937810Z",
+  "scan_mode": "hybrid",
+  "target_cidr": "192.168.1.0/24",
+  "current_device_count": 1,
+  "new_count": 0,
+  "changed_count": 0,
+  "disappeared_count": 0,
+  "new_devices": [],
+  "changed_devices": [],
+  "disappeared_devices": []
+}

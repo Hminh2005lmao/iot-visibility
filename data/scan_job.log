@@ -1,0 +1,40 @@
+[+] Host discovery phase 'default_ping_sweep' on 192.168.1.1/24 (-sn)
+[+]   phase result: 8 up, 8 new, 8 total so far
+[+] Passive observation from ARP cache for 192.168.1.1/24 ...
+[+] Target port scan (80,443,8080,8443,8000,8888,10000,10443,554,1900,22,23,139,445) across 9 discovered hosts ...
+[+]   port-scan batch 1/1 (9 hosts)
+[+] Saved 9 hosts to C:\Final Year Project\iot-visibility\data\inventory.json
+[+] Saved scan metadata to C:\Final Year Project\iot-visibility\data\scan_meta.json
+[+] Runtime: 11.3s
+[+] Wrote labeled inventory to C:\Final Year Project\iot-visibility\data\inventory_labeled.json
+[+] Check profile: safe
+[+] Wrote 4 findings to C:\Final Year Project\iot-visibility\data\findings.json
+[+] Runtime: 2.5s
+[+] Wrote scored device report to C:\Final Year Project\iot-visibility\data\devices_report.json
+[+] Devices scored: 9
+[+] Wrote threat intelligence enrichment to C:\Final Year Project\iot-visibility\data\threat_intel.json
+[+] Enriched findings: 4
+[+] Wrote evaluation metrics to C:\Final Year Project\iot-visibility\data\evaluation_metrics.json
+[+] Wrote asset state to C:\Final Year Project\iot-visibility\data\asset_state.json
+[+] Drift summary: new=9 changed=0 disappeared=44
+[+] Wrote asset changes to C:\Final Year Project\iot-visibility\data\asset_changes.json
+[+] Archived run: 20260310_031828Z
+[+] Files archived: ['inventory.json', 'inventory_labeled.json', 'findings.json', 'devices_report.json', 'threat_intel.json', 'scan_meta.json', 'evaluation_metrics.json', 'asset_state.json', 'asset_changes.json']
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\scanner\discover.py 192.168.1.1/24 --scan-mode hybrid --discovery-profile standard
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\checks\classify_devices.py
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\checks\web_checks_v4.py --check-profile safe
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\checks\score_devices.py
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\checks\enrich_threat_intel.py
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\checks\build_evaluation_metrics.py
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\checks\build_asset_history.py
+
+>> C:\Final Year Project\iot-visibility\.venv\Scripts\python.exe C:\Final Year Project\iot-visibility\api\run_manager.py
+
+[+] Pipeline complete. Latest run saved in data/latest_run.json

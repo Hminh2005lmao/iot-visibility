@@ -1,0 +1,53 @@
+[
+  {
+    "device_id": "192.168.1.1",
+    "ip": "192.168.1.1",
+    "issue_type": "self_signed_tls",
+    "severity": "L",
+    "evidence": {
+      "url": "https://192.168.1.1/",
+      "detail": "HTTPSConnectionPool(host='192.168.1.1', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable "
+    },
+    "timestamp": "2026-03-03T09:02:03.892738Z"
+  },
+  {
+    "device_id": "192.168.1.1",
+    "ip": "192.168.1.1",
+    "issue_type": "https_available",
+    "severity": "I",
+    "evidence": {
+      "url": "https://192.168.1.1/",
+      "status": 200,
+      "server": "",
+      "title": "F6601P"
+    },
+    "timestamp": "2026-03-03T09:02:04.319469Z"
+  },
+  {
+    "device_id": "192.168.1.1",
+    "ip": "192.168.1.1",
+    "issue_type": "headers_missing",
+    "severity": "L",
+    "evidence": {
+      "url": "https://192.168.1.1/",
+      "missing": [
+        "strict-transport-security"
+      ]
+    },
+    "timestamp": "2026-03-03T09:02:04.319469Z"
+  },
+  {
+    "device_id": "192.168.1.1",
+    "ip": "192.168.1.1",
+    "issue_type": "default_login_like",
+    "severity": "H",
+    "evidence": {
+      "url": "https://192.168.1.1/",
+      "status": 200,
+      "server": "",
+      "title": "F6601P",
+      "matched": "password_input"
+    },
+    "timestamp": "2026-03-03T09:02:04.320476Z"
+  }
+]

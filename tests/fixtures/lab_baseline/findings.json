@@ -1,0 +1,59 @@
+[
+  {
+    "device_id": "192.168.50.1",
+    "ip": "192.168.50.1",
+    "issue_type": "default_login_like",
+    "severity": "H",
+    "evidence": {
+      "url": "https://192.168.50.1/",
+      "title": "F6601P",
+      "matched": "password_input"
+    },
+    "timestamp": "2026-03-02T00:00:00Z"
+  },
+  {
+    "device_id": "192.168.50.1",
+    "ip": "192.168.50.1",
+    "issue_type": "self_signed_tls",
+    "severity": "L",
+    "evidence": {
+      "url": "https://192.168.50.1/",
+      "detail": "certificate verify failed"
+    },
+    "timestamp": "2026-03-02T00:00:00Z"
+  },
+  {
+    "device_id": "192.168.50.1",
+    "ip": "192.168.50.1",
+    "issue_type": "https_available",
+    "severity": "I",
+    "evidence": {
+      "url": "https://192.168.50.1/",
+      "status": 200,
+      "title": "F6601P"
+    },
+    "timestamp": "2026-03-02T00:00:00Z"
+  },
+  {
+    "device_id": "192.168.50.20",
+    "ip": "192.168.50.20",
+    "issue_type": "http_only",
+    "severity": "M",
+    "evidence": {
+      "url": "http://192.168.50.20/",
+      "note": "HTTP exposed without HTTPS alternative"
+    },
+    "timestamp": "2026-03-02T00:00:00Z"
+  },
+  {
+    "device_id": "192.168.50.20",
+    "ip": "192.168.50.20",
+    "issue_type": "default_login_like",
+    "severity": "H",
+    "evidence": {
+      "url": "http://192.168.50.20/login",
+      "matched": "keyword:login"
+    },
+    "timestamp": "2026-03-02T00:00:00Z"
+  }
+]

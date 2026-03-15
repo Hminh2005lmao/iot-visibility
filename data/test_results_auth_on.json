@@ -1,0 +1,37 @@
+{
+  "TC-19": {
+    "ok": true,
+    "detail": {
+      "unauthorized": {
+        "/api/devices": 401,
+        "/api/findings": 401,
+        "/api/report": 401,
+        "/api/evaluation": 401,
+        "/export/findings.csv": 401,
+        "/export/evaluation.csv": 401,
+        "/export/report.pdf": 401,
+        "/report/print": 401
+      },
+      "authorized_header": {
+        "/api/devices": 200,
+        "/api/findings": 200,
+        "/api/report": 200,
+        "/api/evaluation": 200,
+        "/export/findings.csv": 200,
+        "/export/evaluation.csv": 200,
+        "/export/report.pdf": 200,
+        "/report/print": 200
+      },
+      "authorized_query": {
+        "/api/devices": 200,
+        "/api/findings": 200,
+        "/api/report": 200,
+        "/api/evaluation": 200,
+        "/export/findings.csv": 200,
+        "/export/evaluation.csv": 200,
+        "/export/report.pdf": 200,
+        "/report/print": 200
+      }
+    }
+  }
+}

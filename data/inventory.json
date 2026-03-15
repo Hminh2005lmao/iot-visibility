@@ -1,0 +1,119 @@
+[
+  {
+    "device_id": "192.168.1.1",
+    "ip": "192.168.1.1",
+    "mac": "48:96:D9:60:37:A8",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      80,
+      443
+    ],
+    "fingerprint_hint": "web_managed_device",
+    "discovery_sources": [
+      "active_nmap",
+      "arp_cache"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.91",
+    "ip": "192.168.1.91",
+    "mac": "C8:21:58:AC:43:88",
+    "vendor_guess": "Intel Corporate",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.99",
+    "ip": "192.168.1.99",
+    "mac": "C0:B8:83:AA:DE:8A",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.194",
+    "ip": "192.168.1.194",
+    "mac": "F6:06:DD:0D:F4:B9",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "unknown",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.206",
+    "ip": "192.168.1.206",
+    "mac": "22:37:C2:8D:99:B7",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.216",
+    "ip": "192.168.1.216",
+    "mac": "B4:E6:2A:40:D0:FC",
+    "vendor_guess": "LG Innotek",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap",
+      "arp_cache"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.217",
+    "ip": "192.168.1.217",
+    "mac": "B4:E6:2A:40:D0:FC",
+    "vendor_guess": "LG Innotek",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "host_up_no_common_ports",
+    "discovery_sources": [
+      "active_nmap"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.218",
+    "ip": "192.168.1.218",
+    "mac": "",
+    "vendor_guess": "",
+    "open_tcp_ports": [
+      139,
+      445
+    ],
+    "fingerprint_hint": "likely_windows_or_smb_host",
+    "discovery_sources": [
+      "active_nmap",
+      "arp_cache"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  },
+  {
+    "device_id": "192.168.1.255",
+    "ip": "192.168.1.255",
+    "mac": "ff:ff:ff:ff:ff:ff",
+    "vendor_guess": "",
+    "open_tcp_ports": [],
+    "fingerprint_hint": "unknown",
+    "discovery_sources": [
+      "arp_cache"
+    ],
+    "last_seen": "2026-03-10T03:18:21.742022Z"
+  }
+]

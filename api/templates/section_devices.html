@@ -1,0 +1,42 @@
+{% extends "section_base.html" %}
+{% set page_title = "IoT Devices" %}
+
+{% block content %}
+<section class="card">
+  <h3>Device Inventory ({{ devices|length }})</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>IP</th>
+        <th>Type</th>
+        <th>Confidence</th>
+        <th>IoT</th>
+        <th>Ports</th>
+        <th>Score</th>
+        <th>Grade</th>
+        <th>Secure</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in devices %}
+      <tr>
+        <td class="mono">{{ d.ip }}</td>
+        <td>
+          {{ d.device_type }}
+          {% if d.vendor_guess %}<div class="muted">{{ d.vendor_guess }}</div>{% endif %}
+        </td>
+        <td>{{ d.device_type_confidence if d.device_type_confidence else "n/a" }}</td>
+        <td>{{ "Yes" if d.is_iot else "No" }}</td>
+        <td class="mono">{{ d.open_tcp_ports }}</td>
+        <td><span class="pill">{{ d.risk_score }}</span></td>
+        <td>{{ d.risk_grade }}</td>
+        <td><span class="{{ 'ok' if d.is_secure else 'no' }}">{{ "Yes" if d.is_secure else "No" }}</span></td>
+      </tr>
+      {% endfor %}
+      {% if devices|length == 0 %}
+      <tr><td colspan="8" class="muted">No devices found.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
