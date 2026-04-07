@@ -16,6 +16,7 @@ Present risk insights through a simple dashboard
 The system is designed for small-scale environments such as homes and small offices, without requiring complex enterprise tools.
 
 Key Features
+
 1 Network Discovery
 Scan local networks to identify active devices using Nmap
 
