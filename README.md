@@ -18,20 +18,26 @@ The system is designed for small-scale environments such as homes and small offi
 Key Features
 1 Network Discovery
 Scan local networks to identify active devices using Nmap
+
 2 Device Classification
 Identify likely IoT devices using MAC vendor lookup, open ports, and service fingerprints
+
 3 Security Checks
 Detect common vulnerabilities such as:
 HTTP without HTTPS
 Default-style login pages
 Missing or weak security headers
 Open or unauthenticated endpoints
+
 4 Risk Scoring System
 Assign risk levels (High / Medium / Low) based on detected issues
+
 5 Interactive Dashboard
 Visualize device information, findings, and risk levels
+
 6 Report Export
 Generate structured reports (JSON / Excel) for further analysis
+
 7 System Architecture
 User
   ↓
@@ -42,19 +48,24 @@ Discovery Module → Classification Module → Security Check Module
 Scoring Engine
   ↓
 Dashboard & Export
+
 8 Tech Stack
 Python – Core backend logic
 Flask – Web-based dashboard
 Nmap – Network scanning and discovery
 HTML/CSS/JS – Frontend interface
 Pandas – Data processing and report generation
+
 9 Demo
+
 🔹 Dashboard Interface
 Displays detected devices
 Shows risk levels and findings
 Provides actionable insights
 
 <img width="1312" height="338" alt="image (3)" src="https://github.com/user-attachments/assets/9e204410-62ab-4dde-9287-3c20ccfc1613" />
+
+<img width="1379" height="957" alt="image" src="https://github.com/user-attachments/assets/9451797c-9241-4d21-a8a3-c2a64c5d36fb" />
 
 
 ⚙️ How It Works
